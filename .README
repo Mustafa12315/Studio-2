@@ -1,0 +1,22 @@
+# New Repo
+
+This is a sample repository.
+
+## Project Overview
+
+NewTestProgram is a simple C# project that includes a program to jumble words.
+
+## Getting Started
+
+To run this project, clone the repository and open it in your preferred C# development environment.
+
+## Prerequisites
+
+- Visual Studio 2019 or later
+- .NET Core SDK
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/BIT-Studio-1/project-24-s1-mustafa-trevor-thomas-and-samuel.git
