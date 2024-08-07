@@ -720,7 +720,7 @@ JB:.:^!7!!B^                .7P::J:         .~5:    :5~.         :J::P7.        
             switch (choice)
             {
                 case "back":
-                    currentLocation = "insideschool";
+                    currentLocation = "insideSchool";
                     break;
             }
         }
@@ -777,7 +777,7 @@ JB:.:^!7!!B^                .7P::J:         .~5:    :5~.         :J::P7.        
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
-            Console.WriteLine("You are inside heading towards the Beach.\nWould you like to proceed?");
+            Console.WriteLine("You are heading towards the Beach.\nWould you like to proceed?");
             do
             {
                 Console.WriteLine("\nWhat's next? > ");
@@ -791,7 +791,7 @@ JB:.:^!7!!B^                .7P::J:         .~5:    :5~.         :J::P7.        
                         ShowInventory();
                         break;
                     case "back":
-                    case "proceed":
+                    case "yes":
                         break;
                     case "help":
                     case "?":
@@ -811,13 +811,13 @@ JB:.:^!7!!B^                .7P::J:         .~5:    :5~.         :J::P7.        
                         break;
                 }
                 Thread.Sleep(1500);
-            } while (choice != "back" && choice != "proceed");
+            } while (choice != "back" && choice != "yes");
             switch (choice)
             {
                 case "back":
                     currentLocation = "extendedSouth";
                     break;
-                case "proceed":
+                case "yes":
                     currentLocation = "beach";
                     break;
             }
@@ -843,55 +843,6 @@ JB:.:^!7!!B^                .7P::J:         .~5:    :5~.         :J::P7.        
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Dazed and hurt you have no chance to defend yourself and");
             Console.WriteLine("You've succumb to the leopard seal's might");
-            Thread.Sleep(1000);
-            Console.Clear();
-            Console.WriteLine(@"&#BGGGPPPPPPPPGGBGPPPPPPPPPPPGPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPGPPPPPPPPPPPPPPPPPGGGGPPGPPPPPPPPG#&
-&P5GBGGGGP5YY555PP5555YYYYJJJJJJJJJJ?JJJJJ???????????????JJJYYYJJJJJYJJJJYYYYY5YY5P555YYY5PGGPGBGYG&
-&PY#GBGPYYY5YYYYJJ???JYYYYYYYYYJYYJJ???JJ?77777777!77777??J?JJJ?JJYYYJYYYYYYYYJ????JYYYJY55Y5GGG#Y5&
-&GJYPB5775BPYJJYYJ7?JJPYJYYJY5555Y?JJJ??777!~!!~~!!~!!!7!!77?JJJ?JY5555Y?JJJYYJ??7?YYJJJ5G5J?YG55J5&
-&G?JYPY7J55?7?YPPG5JJY5J?YJ??YYJJJYJ?77!!!!!7!!~^^!~!~~~!7!!!77?YYJ?JJY?7?J??5Y?JYPP5YJ??55Y??PJ7?P&
-&PJ?JYYJ?YY5PGGGP5P?!JJJJYJ???J?JY??7!!!~~~~~~~~^^~~^~!7!!!~!7!7JJPG5JJJ?JJJ?JY7?YPPGGGP5JY?J?5J?YP&
-P5YJ?JY55Y?JJYYJJY5?7JY55Y??JJJJJ?7?7!~~~~~!~~^~~^^~~!!!!!~~7777??JYPG5??JJ5YJY7755JYY5YJ7J555YYYYYP
-55YJJJP5PP5YYJJY5YYY?J5YJ??J5YYJJJ77!~~~!!!!~~^^:^~!7!!~!!~!!!?J?JJJY5BGJ7?J5YJ775YYYJJJJ5P5Y5YJYYYY
-&BYYYYYPGPYYYYJY5PYYJJJ??J55YYJJJ7?!~!!!!!~~~~^^^~~~~!!~!!~!~!7??JYY5PPBG5J?JJY77P55YYYYYYPGPYYYY5G#
-&BGY5Y?PPJ777??77Y5J?JYYY5P555YJ?7!~!!7!~~~~!~~^^^~~~!~!!~!!!7777JY5YPPGGGPPYJJ??5Y???JJJJYG5?Y5YGB#
-&GGP5Y?55J?77?J7?JJ777YY5555PP5PJ77!!!!777!!!!!~~~!~~!~~~7!777!?7?55Y555555PYJ?77JJ?7JJJ?JJY5?Y55PP#
-&P55PY?5555???JJYYYJJJJJYYYYPGGGP?77777!!!!!!!!!!!7!!!!!7?7777???5GGPP555YYYYYYYYYYYYYJ??55P5?J5YPP&
-&G5YY??PYJJ5YJJ?JPYJYYYYYYY5GGBBB?777!~~~~!7????7!!7777!~~~~!77?JGBGGGBGP55YYY555PG5JYJJYYJ557JYY5P&
-GGPYJ??5YJJYPJJJGB5YJYYYYY5PBGGBY~~~77JJ?7!!!777!!~77~!!7JJ?7!~~!5BGGPB55YYYY5555PBPYJJPYYY557JYJJP&
-J555J7?PJJ5Y??JPGGPYY5YYY55B#PY?!!JG#&&&&&#GY?77??7?JYPB&&&&#G5?!7?5GGBB5YYJJ55YYPBBPJ7?Y5Y557?JJJP&
-JYJJJJ?P5YY77Y55PPYJ?JJJJYYG#5!!JG&&&&&&&&&&#5JJ^JGYP&&&&&&&&&&#P?7?PGBPJJJJJJJJJYBGG5J77Y5P57?JJJG&
-?JJJJ??PPY??YP55GY?????????P&G??B&&&&&&&&&&&&#77^!5J#&&&&&&&&&&&&PJ?GG#5??77????7?GP5YPY?75GP????JG&
-JYYJ77?P5J?YGG5P#PYYJ????Y5BBG??G&##&&&&&&#&&G?J^!J?B&&&&&&&&&&&&P?JBGBBY???J?JJJ5BBGPYPY?JG5????JP&
-55YJ???5Y7JPY?J5GBBY5JJJ?YBPBB?!P########&&&#Y77^!7??#&&&#######&5??#BBBB???JJJYGBGBG5JYPJ7Y5?JJJJP&
-PYJJ???5?75P7Y55PGBYY77?J5BPB#?~Y&#####&&&BP?!!7??7!??P#&&######&Y7?##G5B5???JYJPG5P555JYY77YJ?JYJP&
-#PYJJ?JY!?P5Y5P55GGJ577?5PGPBP!!!JGGGBGP5?7!7?P#&&#Y777?JYPGGBBB5!?75#PYG577???JGGGPY55YYP?7YJ?JJJP&
-&G???JYY!JPYY555PGGJ57!?55PPG?!!!!~~!7?J?JY77B&&&&&&G!5Y???7!!!~!!7!?P5JGY?!7??JPGPP5J?55GY7YJ?JJJP&
-#GJ???JY7JGJYYY5PP5JY7!?YYY5G???J?7JYYJYJYY~J&&&&&&&&7?JYYYJY?7?????YYPJGY?!7??YPGPP5JJY5YJ7JJJ???P#
-BPP?7JJJJYG55555PPPJY7!?YJYGBJJ5YYJJJ??5J?J~5&&&&&&&&777JY???7?JJJJJJGGPGJ7!7?JY5GG55YJY5YJ?JYY7?PPG
-BPP???J5?JPB5BP55P5Y5YJYYJPPBBP5YY5PP5JJ57?!?G&&&&&&P7Y?5?5GGGP5555PBBPG5YJ???YY5GGP5YJYPYJJYY???PPG
-#PP??YYPY?Y5YYY55PYJJ????JPGGB##BG#&##B??7??P~JJ!?JJ7BY?JB&&&&BGGG##BGPP55JJ77Y55GPP5YJY5J?J5YJ?JP5#
-#PPJJJYPP7??YY5555YYJ7!7JYPBBB##BP5##B#5!77?J^~~^~~!75J75###B#YY5G#BGGPP55?777JP5GP555?JY??J5YJ?JPP#
-#55YYYJPGJ!7J55555?JY7!7?J5BGGBB#PJP&#BPJJ!7!^~!!!~!?Y5?5BBB&B?YYBBGGPPGYJ?7??JJJPG55JJJ???Y5JJJJ5G&
-&5JJJYJPG5?7?J5PP5?5Y?77?JYGPPPGBPY?&&&#5J?JJJ7JY?JJJJ5J5B##&?J55BGGPPPY???JJYJJ?YGP5YYJ??J55JJJJ5P#
-&5JJJJJGB5PJ7?J5P5????7???YGPPGGBGY75&&GJ??J7J7Y~5~YJ55YYG##P!55PBGGGGPYJJJJJJJJY5PYYYJ??J555JJJYY5#
-&5YJJ??PBPPPJ?JY5GYJJYYYYY5GPPPGBGJ?!P#G?!7~!~~!^7~?JJYY5BBP??55PBGGGGGJ???77?JJJ55YYJ??YG5YYJJJYJY#
-&P5YJJJ55YY5PY??55YJJ?7??JYPGPPG#GY?!?GGYJJ7?7J?JYYJJYJ55BGJ7J5YGBGGGPGYJ???????JYP5Y?7YGPY55JJJJYY#
-&P55YJJYJJYY5PY??YJ??7!777?5GPPPBG!7!~JY55YYYYJJYYYY55PPP5J77JJY#BGGPPPYJJ??J?JJJYP5J75BP5Y55YJJJYY#
-&P5YJJJY?JJY55GY?JY??????JJ5BP5GGB5J!~~7???7777?JJ??JJJYY?7?JYPB#BGGPPGJ??J???YYYYYYYPBPY??J5JJJYYY#
-&GP5J?JY?JYY55Y5J?J????????JYGG55PGBBGJ!777!!!~!77!7!7?Y??5GBBBPPP555PY??????????JJ?YY55YYJJYJJJY55#
-&P5GJJ5YJ55YYJ?JJJ?JJJYYJJJYJPGYJYY5GBBGPJ!?7~~!?7777!JJGB#BG5PYY5555P5J??JJJJJJJJJ??J?JY5YYYYJJPP5#
-&PY5YJYYYY5YJYYYYYJJY5P55555YYJJJJJJJYPGBBP55Y5PGP5YJ5GBBP5J??JJJJJJJJJJYYY55555P5YYYYJYY555YYJJY55#
-&5Y?JJY55P5??JJ?????7JJ?JJJYYJJJJYYYYYYYY555PGGPPGGGGGGP5YYJJYYYYYYY5YJJ??JYJJJJYJ????J??Y555YY??55#
-&G5?JJ55JJYYY55YJ???JJJ?77????JJJJ????????JYYYP5YY5PPP5JYJJ????????JJ?JJ??????JJJJJYYYYJJJJJ55YJ?5P#
-&P5JJJ5Y????JYYYJ??75YJJJYYYYYYYJ?77777?JJY5YJYJJYYYYYJY5YJJJ???777777?JYYJJJ??J?YYYJJYJJJ??J55JY5P#
-&5YJJJJJJ?JYJY5YYYJJYYJYJJJJ?JYJ??JYYY5PPJJJJJJJ5YY5YYJJY?7YYYYJ?J????JJJ???JJJYYJY5Y5YJYY???JYY?JY#
-&P5JJYY5YY5YJJYJYYJJJ5Y5PP5J??J?JJJY555PYJJJ?YY55JJYYJYJYJJ5555YYYJJJ???JYPP5Y5YJJYYJYJYYJ?YY5YJYY5#
-&GYJ??JJYJJ???JJ?J??JJ?J5PYYYYYYJYJ777??JYY555555YJYJYY5YYYJJJ??J????JY5PYY5YJJJJJJJY???JJYJJYYJYYP#
-&GY57?J???YJ?JJ??JJYYJ??JYYYYYY5555YYYJ???JJJJJJYJ?YJ??JJJJJJJJJYY555YYYY5YJ?JJYY?J??JJ?JJJ??JJ?55P#
-&PY55YJ77???JJJJJ?Y5YJJYJ??77777777???JJJJJYYYJYYJJYJJJJJYJJJ????????7?7?JJ??JJ5YYJJ?JJJJ???7?J5PYP#
-&5JYY55J???JJJJY5GG5PPPP555YJYY55YJJJJJJYJJYYYY55YYYYYYYYYJY55Y5555555555555YY555GP5YJYJJJ??J555JJY#
-&BBBBG5YYJ?JY55PGGPYJJJJYJYYJJJYYJ7!!7!7777777?JJJYYJJJJ???JY55YYJ?YYJJJJJJ?J??YYYYY5PPY?Y5555GGGBG&");
             Thread.Sleep(2000);
             //Decrease health
             health -= 100;
@@ -922,10 +873,20 @@ BPP???J5?JPB5BP55P5Y5YJYYJPPBBP5YY5PP5JJ57?!?G&&&&&&P7Y?5?5GGGP5555PBBPG5YJ???YY
                         ShowInventory();
                         break;
                     case "park":
+                        currentLocation = "park";
+                        break;
                     case "house":
+                        currentLocation = "eastern house";
+                        break;
                     case "church":
+                        currentLocation = "church";
+                        break;
                     case "forest":
+                        currentLocation = "forest";
+                        break;
                     case "back":
+                        currentLocation = "south";
+                        break;
                         break;
                     case "items":
                         ViewItems(eastItems);
@@ -951,24 +912,6 @@ BPP???J5?JPB5BP55P5Y5YJYYJPPBBP5YY5PP5JJ57?!?G&&&&&&P7Y?5?5GGGP5555PBBPG5YJ???YY
                 }
                 Thread.Sleep(1500);
             } while (choice != "park" && choice != "house" && choice != "church" && choice != "forest" && choice != "back");
-            switch (choice)
-            {
-                case "park":
-                    currentLocation = "park";
-                    break;
-                case "house":
-                    currentLocation = "eastern house";
-                    break;
-                case "church":
-                    currentLocation = "church";
-                    break;
-                case "forest":
-                    currentLocation = "forest";
-                    break;
-                case "back":
-                    currentLocation = "south";
-                    break;
-            }
         }
         //Out side the Abandoned building - Mustafa
         static void EastHouse()
@@ -1235,68 +1178,6 @@ BPP???J5?JPB5BP55P5Y5YJYYJPPBBP5YY5PP5JJ57?!?G&&&&&&P7Y?5?5GGGP5555PBBPG5YJ???YY
             Console.WriteLine(".");
             Console.WriteLine("You shudder in fear a mega horde of zombies are a alerted to presence");
 
-            Thread.Sleep(2000);
-            Console.ForegroundColor= ConsoleColor.Red;
-            Console.WriteLine(@"
-                                       :!YGGBGGPPPBB5Y^:....                                       
-                                    :^!?5G@@@@@@@@@BJ7!~^!J?7!~~^:..                                
-                               :!JPBG5JJP#GY?!^^:!B#7~   .?5PG57^:::^^:                             
-                           :7YPG@@5~:~77~.        :#?:!~    .~YB&BJ^..^!!^                          
-                        ^7YY?~~YY: ~7~.    ^:      JG  ~7       ~5&@P?: .7J~                        
-                     :!?7^.  75~  :!7:    ?Y       !B   7?        :JPJJY~  !?~                      
-                   ^7!^    :5?    7!.    !&:       ~G   .B:         :JJ~Y5! .~7:                    
-                 ^!~.     ^J^   .Y~      P5        ^P:   Y7   .^      !G^.!^  .!!                   
-               :7~.  !J:  :     Y!       B!  .     .!7:  .:   7J       ~B. ^.   :!:                 
-              !7.  ^Y7.        75        G~  !.      5^  :J   5P        ?? ?!  .~ ~~                
-            :J~   ?Y:    !     P^        P~  7^     .#^  !#   5Y        :! 75   ?^ ^!               
-           ^Y:  .5?     ~?    :Y   .   : P?  !~     7&.  P@7  YJ           7B   .J  :!              
-          ~P:  .P7      5:    .:  .!   J~PG  ~?     B#  ^@@&: ?5     ..    !#.   ^?  :7.            
-         ^G:  .G7      ??   .~    ~Y  :&JB@~ ~G    ^@P  YJ?@G ^B.    ^?    ~&.    ^?. :?            
-        .B!   YJ      ^5    77   :BP  5##~JP J@?   J@5 ~Y  ~&Y #?    .B:   ~@^     :J^ ^J           
-        5P  ~7P      :5:   ^B:  ^YB&.!Y ^ ~G~PP@J  5@&J#7   ~&^Y@^   !@J   ^@!      .Y7 7J          
-       ^@~ ~Y?~     .Y^   ^#Y  77 :GYP~   ?&5. !#B?G#5@@J    PP~@&^  P@@^  ^@5        YY 57         
-       5# .B~      :Y^   ?&&.:5~    7G~  :#P.   .?#@@?^PB:   !#!&JB.:@#BB. :&@^     .  55:#~        
-      .#P JB      ^5^  ~G@&G^#!       .  G5       .!P&J :.   ~#GP ?5J@! 5G: B@B.    ~:  BYG#:       
-      :@5.&5     ?G: ~PBJ^!##5           ^           :!.     !@#:  G@G   ~5!5Y&P    .!  ~&&@~       
-      ^@P7@?   .G#:~PP!    B@!   .^^^^:.  ^?^           :~!7 5@~   :#7     7BP^P5    7^ .&@&:       
-      :&&B@7   P&JGB!      ~&7    .:^~7?JY#7           :J57:^#!     ::      .!. YY   ^Y ^@@#.       
-       B@@@?  !@&@5.        ^!           .:^.          :.   ~7                   ?J  .BPB@@G        
-       G@@@J.:PGB5                                                  .^!??!~.      J7  P@@@@P        
-       P@@@P?^P?G.  ^7JYYYJ?!^:               .^      :         .~JP#@@@@@@&GJ~:   P^ J@@@@5        
-       J@@@@5 :P? !YYJG@@@@@@@&#GY7~:.      :7P!      J57~^^~7YG&@@@@@@@@@@@@#J7~  7P 7@&&@Y        
-       ~@@@&^ .#^ :^7P&@@@@@@@@@@@@@&#BGPPPP57:        ~?YB@@@@@&P5PGB@@@@@@@@&5:  :#:^@P5@5        
-       :&@@?  ^&~!P&@@@@@@@@@#YJ5#@@@@@@@@@Y:   ...    .^J&@@@@@&##&&@@@@@@@@@GYP7 .#^ #J7@P        
-       ^@@P   ~@Y^J&@@@@@@@@@@@@@@@@@@@@@@P!.   :JP.   :^^~J#@@@@@@@@@@@@@@&P!   ^ ~#. Y?:@#.       
-       ?@#:   ^@P  :Y#@@@@@@@@@@@@@@#GY5#!  !JY^  :   7GG57..?#Y!?J5PGB#&@B!.      GJ: ^5 G@^       
-       B@7  7! B@5:  .!Y#@@@@@#G5?!:. .P^ ?#@@@&^    Y@@@@#7: :~       .:^^^^.   .P5Y:  ?~!@J       
-      ?@#?^ ~@7~&&~    .?G5?!^.       .. ~JY@@@@G   ~@@@@@J .                  .7#GGY    ~ G&.      
-     ~@@@G. ^@@5?#P^   .:                  .#@@@@^  J@@@@B.                   !5Y^:B^      ^@Y      
-    7&#@G.  ?@@#7!55!                       ~@@@@7  J@@@#:   .:.              .  ~##.       7@!     
-   ~J!GP.   G@@@&Y^                .!PY~     !&@@J~?J@@P:   .!P#55J7^::......^~?G@&B         J&^    
-    :B5 .. !@@&GP@@GJ~:.      .:^75#@&@J~     :P@5!P7#?       77.P@JJ@&B?JG#&5?@@@~Y.  :^   ?75#~   
-   ~#? ~Y: G&7.  !@@@@&B5GPPPP~J@@@GJ?5^        ^:.:             !@.Y@@! !@@5 ?@@# 7:  5~   J@#@@?  
-  ~#! J?. ~#^    .#@@@@G.5@@@7 .#@@J.!^~            :.           ~#:G@B .#@&: 5@@# ^: :P    .##~Y#P^
- ^#~.5~   Y?     ~@@@@@B  G@@!  Y@&::^:?7  :.    7. Y~ :         ?5?Y@G ?@@B  G@@@^   !?     ?&. .^:
-.B7:B!    P^     G@@@@@@^ ~@@G  7@?7  :#~  7~^?  B~^Y  77 ?^..:~5!:BB@B 5@@G  B@@@Y   J^  7! ~#.    
-JP~&P .?  P:    ?@&#@@@@J  B@@~ !J GBB&@5~.7?!P.:G?JG^:~P7#Y^7&@@P^@@@&.J@@5  B@@@#.  5.  Y@!55     
-#G#@! :&^ Y^   .#G^P@@@@#. ?@@J ^JB@@@@P..5@@@5^~B@&G:^G@@@B ~@@@@&@@@@^^@&^  G@@@@~ ^B.  P@@@^     
-@&!#!  #5 ^:   .7 .&@@@@@! .5G^ :@@@@@@P 7@@@@! .#@@J  G@@@@5B@@@@@@@@@~ ?~   J@@@#: Y@^ ~@YP!      
-@P BJ  !&^   .     P@@@@@?      .#@@@@@@!#@@@@7 P@@@#.7@@@@@@@@@@@@@@@&:      ?@@#~ ^&&.^B?         
-P? !#:  JB.  5:    .P@@@@7       G@@@BB@@@@@@@PJ@@@@@5&@@@@@@@@&!#@PJ@?     ^P@&Y. ^#@BJP~          
-..  ?P.  JP  G: .~   !G@@&J.     7@@@!~@@@@@@@@@@@@@@@@@@&5@@@@B !@5^~     7&@5: ^Y&@@#?            
-     !5^  JP 5J  J!    ~P&@B~     55@^ B@@GY@@@@@YP@@@@@@B 5@@@5 ^G:      Y@&7^JB&@@@Y:             
-      :JJ: YGY@?  Y!     :J#@?    .:Y!!#@@?:@@@@&.!@@@@@@J ^@@@P^!^     .P@@&B@@JY@B~               
-        ~55!B@@&5: 5?       7#5     :::G7@!.#@@@5 :&@@@@@~ ?#&~.       :B@@@@@B:^@P.                
-          7#@@@J!P7:&G^   YY:.5P       5:55 5@@@P :&@@B&B!J7.5.       ^P&@&?GG. JB                  
-           .5@@Y .J55@&5: BBY?^PG.     ^.~G75J##!YY5&Y ^P.   7       ~J:G@! :.  ^^                  
-             J@P   ~P@75&5&J :7PGY:       J^  ~P .. 5:  ~~          !?  BJ                          
-              PP    .~. ?@@!   ..:J^           .    Y~             ??   ^                           
-              ~7        .&#.      .J!               ^^           :5?                
-                         !^         ?J:                        .?B7                   
-                                     ~P?.          ...    .? .?#B^                  
-                                      .?PY~.  .~YG#&&#GPY5#B5##?                                    
-                                        .75PJ?JYYJ?77!!!!!!!!~.                                     ");
-            Console.ResetColor();
             Console.WriteLine("The Consumes your vision as all hope leaves, Doing what little you can the fight");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("turns nasty with a zombie managing to grab your arm.");
