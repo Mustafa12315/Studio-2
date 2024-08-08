@@ -1,0 +1,15 @@
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.GeneratedMSBuildEditorConfig.editorconfig
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.AssemblyInfoInputs.cache
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.AssemblyInfo.cs
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.csproj.CoreCompileInputs.cache
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.sourcelink.json
+H:\Semester2 2024\Studio 2\Studio-2\bin\Debug\net8.0\ZombieGame.exe
+H:\Semester2 2024\Studio 2\Studio-2\bin\Debug\net8.0\ZombieGame.deps.json
+H:\Semester2 2024\Studio 2\Studio-2\bin\Debug\net8.0\ZombieGame.runtimeconfig.json
+H:\Semester2 2024\Studio 2\Studio-2\bin\Debug\net8.0\ZombieGame.dll
+H:\Semester2 2024\Studio 2\Studio-2\bin\Debug\net8.0\ZombieGame.pdb
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.dll
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\refint\ZombieGame.dll
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.pdb
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ZombieGame.genruntimeconfig.cache
+H:\Semester2 2024\Studio 2\Studio-2\obj\Debug\net8.0\ref\ZombieGame.dll

@@ -104,7 +104,7 @@ namespace ZombieGame
                     case "west":
                         west();
                         break;
-                    case "convenience":
+                    case "convenience store":
                         Conve();
                         break;
                     case "pharmacy":
@@ -153,7 +153,7 @@ namespace ZombieGame
                         feast();
                         break;
                     case "church":
-                        Church("Pain Killerrr", Inventory);
+                        Church("painkiller", Inventory);
                         break;
                     case "eastern house":
                         EastHouse();
@@ -1262,7 +1262,7 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
-            string[] pharmacyItems = new string[] { "Pain Killerrr", "Bandages" };
+            string[] pharmacyItems = new string[] { "painkiller", "Bandages" };
             Console.WriteLine("You have entered the Pharmacy");
             Console.WriteLine("Bang!!");
             Console.WriteLine(" :) You have shot a dead Zombie..");
@@ -1279,10 +1279,10 @@ namespace ZombieGame
                         ShowInventory();
                         break;
                     case "add painkiller":
-                        HandleAddItem("Pain Killerrr", ref pharmacyItems);
+                        HandleAddItem("painkiller", ref pharmacyItems);
                         break;
                     case "drop pain killer":
-                        HandleDropItem("Pain Killerrr", ref pharmacyItems);
+                        HandleDropItem("painkiller", ref pharmacyItems);
                         break;
                     case "use pain killer":
                         health = health + 20;
