@@ -129,7 +129,7 @@ namespace ZombieGame
                         Conve();
                         break;
                     case "pharmacy":
-                        Pharmacy();
+                        Pharmacy("Shotgun", Inventory);
                         break;
                     case "factory":
                         factory();
@@ -1274,7 +1274,7 @@ namespace ZombieGame
                     break;
             }
         }
-        static void Pharmacy()
+        static void Pharmacy(string item, string[] inventory)
         {
             Console.Clear();
             // Set the console text color to green
@@ -1284,9 +1284,26 @@ namespace ZombieGame
             // Reset the console text color to default
             Console.ResetColor();
             string[] pharmacyItems = new string[] { "painkiller", "Bandages" };
-            Console.WriteLine("You have entered the Pharmacy");
-            Console.WriteLine("Bang!!");
-            Console.WriteLine(" :) You have shot a dead Zombie..");
+            Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
+            bool shotgunInPharmacy = Array.Exists(inventory, i => i == item);
+            if (shotgunInPharmacy)
+            {
+                Console.WriteLine("You manage to grab hold of your shotgun and open fire on the zombie...");
+                Thread.Sleep(2000);
+                Console.WriteLine("You killed it, thank God");
+            }
+            else
+            {
+                bool ContinueMethod = true;
+                Console.WriteLine("you reach for a random box of medicine off the pharmacy shelf...");
+                Thread.Sleep(2000);
+                Console.WriteLine("It has no effect against the undead menace, the zombie rips you to shreds, you perish.");
+                Thread.Sleep(2000);
+                health -= 100;
+                Health(ref health, ref ContinueMethod);
+                
+            }
+
             do
             {
                 Console.Write("\nWhat's next? > ");
