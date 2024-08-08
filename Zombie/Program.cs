@@ -153,7 +153,7 @@ namespace ZombieGame
                         feast();
                         break;
                     case "church":
-                        Church();
+                        Church("Pain Killerrr", Inventory);
                         break;
                     case "eastern house":
                         EastHouse();
@@ -1573,7 +1573,7 @@ namespace ZombieGame
         }
 
         //Church -Mustafa (Made a bit story here :) ) 
-        static void Church()
+        static void Church(string item, string[] inventory)
         {
             Console.Clear();
             // Set the console text color to green
@@ -1584,32 +1584,43 @@ namespace ZombieGame
             Console.ResetColor();
             string[] churchItem = new string[] { "Key" };
             int key = 0;
-            Console.WriteLine("\nYou are heading inside the church..");
-            Console.WriteLine("You open the door.. Creeeekk");
-            Console.WriteLine("You find 2 Survivors that were recently infected");
-            string TalkingPart1 = "Survivor 1 : Please Don't Kill us\n" +
-                                  "Survivor 2 : It's a survivor\n";
-            string highlightedWord = "Survivor 1: FUCKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK!! DAMN IT!";
-            string TalkingPart2 = "\nPlayer : What happened?\n" +
-                                  "Survivor 2 : You have to find the point of Evacuation and return back to save us..\n" +
-                                  "\t We found a hint but we couldn't solve it and before we knew it, it was too late.\n" +
-                                  "\t The hint is Within these walls, a haven waits, Where safety beckons, beyond the gates.\n" +
-                                  "\t to find ... what was after it?\n" +
-                                  "Survivor 1 : Within these walls, a haven waits, Where safety beckons, beyond the gates.\n" +
-                                  "To find salvation, heed this call, In the heart of governance, stands tall.\n" +
-                                  "Survivor 2: And we found this key..\n" +
-                                  "Player : I'll try..";
+            Console.WriteLine("TEMPORARY\nPleae get us some painkillers to help soothe our pain, if you do this we will provide you with information you may find useful if you want to escape this wretched place.");
+            bool painkillerInHouse = Array.Exists(inventory, i => i == item);
+            if (painkillerInHouse)
+            {
 
-            PrintOneByOne(TalkingPart1);
+                Console.WriteLine("\nYou are heading inside the church..");
+                Console.WriteLine("You open the door.. Creeeekk");
+                Console.WriteLine("You find 2 Survivors that were recently infected");
+                string TalkingPart1 = "Survivor 1 : Please Don't Kill us\n" +
+                                      "Survivor 2 : It's a survivor\n";
+                string highlightedWord = "Survivor 1: FUCKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK!! DAMN IT!";
+                string TalkingPart2 = "\nPlayer : What happened?\n" +
+                                      "Survivor 2 : You have to find the point of Evacuation and return back to save us..\n" +
+                                      "\t We found a hint but we couldn't solve it and before we knew it, it was too late.\n" +
+                                      "\t The hint is Within these walls, a haven waits, Where safety beckons, beyond the gates.\n" +
+                                      "\t to find ... what was after it?\n" +
+                                      "Survivor 1 : Within these walls, a haven waits, Where safety beckons, beyond the gates.\n" +
+                                      "To find salvation, heed this call, In the heart of governance, stands tall.\n" +
+                                      "Survivor 2: And we found this key..\n" +
+                                      "Player : I'll try..";
 
-            // Set the console text color to red for the highlighted word
-            Console.ForegroundColor = ConsoleColor.Red;
-            PrintOneByOne(highlightedWord);
-            // Reset the console text color to default
-            Console.ResetColor();
+                PrintOneByOne(TalkingPart1);
 
-            PrintOneByOne(TalkingPart2);
+                // Set the console text color to red for the highlighted word
+                Console.ForegroundColor = ConsoleColor.Red;
+                PrintOneByOne(highlightedWord);
+                // Reset the console text color to default
+                Console.ResetColor();
 
+                PrintOneByOne(TalkingPart2);
+            }
+            else
+            {
+                Console.WriteLine("TEMPORARY\nPlease press enter to continue");
+                Console.ReadLine();
+                east();
+            }
             do
             {
                 Console.Write("\nWhat's next? > ");
