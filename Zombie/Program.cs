@@ -81,7 +81,19 @@ namespace ZombieGame
 
             Console.Clear();
             //Input call by Samuel B 25/5/2024//
-            Console.WriteLine("'You hear a voice screaming and you wake up... do you want to wake up?'");
+            string startstory = "You wake up groggy, sunlight streaming through the gaps in your blinds. It's a Saturday, or at least it should be.\n"+
+                "you stretch and glance at the clock—it's later than you intended to sleep. Something feels off, though.\n" +
+                " The usual hum of your neighborhood is conspicuously absent. No cars rumbling down the street, no distant chatter.\n" +
+                "As you get out of bed, you hear nothing but the faint creak of floorboards. You peer out the window and are\n" +
+                " met with an unsettling sight: empty streets. Abandoned cars are scattered around, their doors ajar.\n" +
+                " A few people are wandering aimlessly, but they move in a slow, disjointed manner that doesn’t fit with the usual hustle of a weekend morning.\n" +
+                "Confusion turns to concern. You step outside, the air feels thick, almost oppressive. The eerie silence is punctuated by distant,\n" +
+                " unsettling noises—muffled cries, distant groans. You quickly realize the gravity of the situation. \n" +
+                "Your neighborhood, once bustling with life, is now a ghost town.\n" +
+                "Your heart races as you try to piece together what’s happened. This isn’t some elaborate prank or a temporary power outage;\n" +
+                " something serious has occurred.\n" +
+                "You need to understand this new reality and figure out how to protect yourself and find any other survivors.\n";
+            PrintOneByOne(startstory);
             Input();
 
             //While loop for location to prevent stack overflow

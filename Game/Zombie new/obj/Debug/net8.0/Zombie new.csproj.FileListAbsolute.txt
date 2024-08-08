@@ -1,0 +1,14 @@
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\bin\Debug\net8.0\Zombie new.exe
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\bin\Debug\net8.0\Zombie new.deps.json
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\bin\Debug\net8.0\Zombie new.runtimeconfig.json
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\bin\Debug\net8.0\Zombie new.dll
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\bin\Debug\net8.0\Zombie new.pdb
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.AssemblyInfoInputs.cache
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.AssemblyInfo.cs
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.csproj.CoreCompileInputs.cache
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.dll
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\refint\Zombie new.dll
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.pdb
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\Zombie new.genruntimeconfig.cache
+C:\Users\musta\OneDrive\Desktop\Game\Zombie new\obj\Debug\net8.0\ref\Zombie new.dll
