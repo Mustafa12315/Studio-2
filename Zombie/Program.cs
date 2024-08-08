@@ -272,10 +272,10 @@ namespace ZombieGame
                         HandleDropItem("Shotgun", ref houseItems);
                         break;
                     //Cases for vest - Samuel B 3/06/2024
-                    case "add vest":
+                    case "add bulletproof vest":
                         HandleAddItem("Bulletproof Vest", ref houseItems);
                         break;
-                    case "drop vest":
+                    case "drop bulletproof vest":
                         HandleDropItem("Bulletproof Vest", ref houseItems);
                         break;
                     //Cases for help - Samuel B 3/06/2024
@@ -1308,13 +1308,13 @@ namespace ZombieGame
                     case "use painkiller":
                         health = health + 20;
                         break;
-                    case "add bandage":
+                    case "add bandages":
                         HandleAddItem("Bandages", ref pharmacyItems);
                         break;
-                    case "drop bandage":
+                    case "drop bandages":
                         HandleDropItem("Bandages", ref pharmacyItems);
                         break;
-                    case "use bandage":
+                    case "use bandages":
                         health = health + 30;
                         break;
                     case "items":
