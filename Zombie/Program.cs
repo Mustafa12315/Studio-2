@@ -1099,7 +1099,7 @@ namespace ZombieGame
                     case "inventory":
                         ShowInventory();
                         break;
-                    case "convenience":
+                    case "convenience store":
                     case "pharmacy":
                     case "factory":
                     case "back":
@@ -1108,7 +1108,7 @@ namespace ZombieGame
                     case "help":
                     case "?":
                         Help();
-                        Console.WriteLine("'convenience' - to navigate and proceed to a nearby convenience store ");
+                        Console.WriteLine("'convenience store' - to navigate and proceed to a nearby convenience store ");
                         Console.WriteLine("'pharmacy' - to navigate and proceed to the nearby pharmacy");
                         Console.WriteLine("'factory' - to navigate and proceed to an old chocolate factory");
                         Console.WriteLine("'town hall' - to navigate and proceed to the Dubravica town hall");
@@ -1125,11 +1125,11 @@ namespace ZombieGame
 
                 }
                 Thread.Sleep(1500);
-            } while (choice != "convenience" && choice != "pharmacy" && choice != "factory" && choice != "back" && choice != "town hall");
+            } while (choice != "convenience store" && choice != "pharmacy" && choice != "factory" && choice != "back" && choice != "town hall");
             switch (choice)
             {
-                case "convenience":
-                    currentLocation = "convenience";
+                case "convenience store":
+                    currentLocation = "convenience store";
                     break;
                 case "pharmacy":
                     currentLocation = "pharmacy";
@@ -1302,10 +1302,10 @@ namespace ZombieGame
                     case "add painkiller":
                         HandleAddItem("painkiller", ref pharmacyItems);
                         break;
-                    case "drop pain killer":
+                    case "drop painkiller":
                         HandleDropItem("painkiller", ref pharmacyItems);
                         break;
-                    case "use pain killer":
+                    case "use painkiller":
                         health = health + 20;
                         break;
                     case "add bandage":
