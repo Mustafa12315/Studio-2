@@ -1305,9 +1305,6 @@ namespace ZombieGame
                     case "drop painkiller":
                         HandleDropItem("painkiller", ref pharmacyItems);
                         break;
-                    case "use painkiller":
-                        health = health + 20;
-                        break;
                     case "add bandages":
                         HandleAddItem("Bandages", ref pharmacyItems);
                         break;
