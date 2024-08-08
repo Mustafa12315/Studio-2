@@ -29,7 +29,10 @@ namespace ZombieGame
 
             // Mustafa - Starting the game
             // Samuel B - Editing Start Menu - 1/06/2024
-            Console.WriteLine("Press enter....");
+            //edited the intro assci so that it comes as a animation
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Put the window in full screen. \nPress enter....");
+            Console.ResetColor();
             Console.ReadLine();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
