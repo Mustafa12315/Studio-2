@@ -2015,6 +2015,49 @@ namespace ZombieGame
                 ContinueLoop = false;
             }
         }
+        static void fight()
+        {
+            bool Continueloop = true;
+            int enemyHealth = 100;
+            int playerHealth = 100;
+            Random random = new Random();
+            do
+            {
+                int runChance = random.Next(1);
+                int damage = random.Next(65);
+                Console.WriteLine("'attack' or 'run'");
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "attack":
+                        enemyHealth = enemyHealth - damage;
+                        Console.WriteLine("You fire upon the Zombie...");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("The shotgun shells tear off chunks of flesh from the Zombie");
+                        Thread.Sleep(2000);
+                        break;
+                    case "run":
+                        Console.WriteLine("You attempt to flee...");
+                        Thread.Sleep(2000);
+                        if (runChance == 1) { Console.WriteLine("You were successful MOVING BACK TO HOUSE, TEMPORARY"); Thread.Sleep(2000); House(); }
+                        if (runChance == 0) { Console.WriteLine("You were unsuccessful"); Thread.Sleep(2000); }
+                        break;
+                }
+                Console.WriteLine("The Zombie charges you!");
+                Thread.Sleep(2000);
+                int enemyAtkChance = random.Next(1);
+                int enemyAtkDamage = random.Next(45);
+                if (enemyAtkChance == 1)
+                {
+                    playerHealth = playerHealth - enemyAtkDamage;
+                    Console.WriteLine("The Zombie's attack connects with your body!");
+                    Thread.Sleep(2000);
+                }
+                Console.WriteLine($"You have {playerHealth} points of health left");
+                if (playerHealth <= 0) { health = 0; Health(ref health, ref Continueloop); }
+            } while (playerHealth >= 1);
+            
+        }
 
     }
     //--------------------------------
