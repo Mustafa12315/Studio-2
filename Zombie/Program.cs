@@ -20,6 +20,8 @@ namespace ZombieGame
         private static string instructions = string.Empty;
         private static string choice = string.Empty;
         private static string currentLocation = "house";
+        public static int houseid = 0, southid = 0, extendedsouthid = 0, leftid = 0, schoolid = 0, insideid = 0, schoolrightid = 0, schoolleftid = 0, rightid = 0, beachid = 0, eastid = 0;
+        public static int easthouseid = 0, insideaban = 0, parkid = 0, westid = 0, factoryid = 0, conveid = 0, pharmacyid = 0, townhallid = 0, forestid = 0, forestnorthid = 0, forestsouthid = 0, foresteastid = 0, churchid = 0;
         //global health variable by Samuel B 3/06/2024
         private static int health = 0;
 
@@ -245,8 +247,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (houseid == 0)
+            {
 
-            Console.WriteLine("\nYou are located within a small 2 story house located in the northern outskirts of Dubravica");
+            }
+            else
+            {
+
+            }
+            houseid = houseid + 1;
             do
             {
 
@@ -318,6 +327,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (southid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            southid = southid + 1;
             Console.WriteLine("\nYou've gone south but not all seems right in the distance whining echo's through what could you could almost distinguish as the whining of children");
 
             do
@@ -397,6 +415,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (extendedsouthid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            extendedsouthid = extendedsouthid + 1;
             Console.WriteLine("\nYou find yourself standing at the edge of a quiet street, shrouded in the soft glow ");
             Console.WriteLine("of the evening sun. The street is named \"Crescent Way\", but locals refer to it");
             Console.WriteLine("simply as \"The Forgotten Path.\" The air is thick with mystery, and each house along ");
@@ -469,6 +496,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (leftid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            leftid = leftid + 1;
             //Change this - Samuel B 4/06/2024:
             do
             {
@@ -538,6 +574,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (schoolid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            schoolid = schoolid + 1;
             Console.WriteLine("You are on your way to the school.");
             Console.WriteLine("Do you wish to Proceed?");
             do
@@ -601,6 +646,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (insideid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            insideid = insideid + 1;
             Console.WriteLine("You are inside the School building.");
             Console.WriteLine("YOU HEAR A VOICE SCREAMING");
             Console.WriteLine("Right");
@@ -665,7 +719,16 @@ namespace ZombieGame
             // Display the player's current health
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
-            Console.ResetColor();
+            Console.ResetColor(); 
+            if (schoolrightid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            schoolrightid = schoolrightid + 1;
             Console.WriteLine("You are inside the Staff room.");
             do
             {
@@ -724,6 +787,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (schoolleftid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            schoolleftid = schoolleftid + 1;
             Thread.Sleep(2000);
             Console.WriteLine("You have turned Left");
             Thread.Sleep(1000);
@@ -766,7 +838,16 @@ namespace ZombieGame
             // Display the player's current health
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
-            Console.ResetColor();
+            Console.ResetColor(); 
+            if (rightid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            rightid = rightid + 1;
             Console.WriteLine("You are heading towards the Beach.\nWould you like to proceed?");
             do
             {
@@ -823,7 +904,16 @@ namespace ZombieGame
             // Display the player's current health
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
-            Console.ResetColor();
+            Console.ResetColor(); 
+            if (beachid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            beachid = beachid + 1;
             Console.WriteLine("\nYou reach the Beach the smell of the ocean is a bitter");
             Console.WriteLine("yet comforting old smell but as you stand upon that sand");
             Console.WriteLine("You slip and tumble down to the rocky den of leopard seal");
@@ -848,7 +938,16 @@ namespace ZombieGame
             string[] eastItems = new string[0];
             Console.WriteLine("You have gone East.");
             Console.WriteLine("You see 4 paths ahead");
-            Console.WriteLine("Park\nHouse\nChurch\nForest");
+            Console.WriteLine("Park\nHouse\nChurch\nForest"); 
+            if (eastid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            eastid = eastid + 1;
             do
             {
                 Console.Write("\nWhat's next? > ");
@@ -915,6 +1014,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (easthouseid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            easthouseid = easthouseid + 1;
             // Display the current location description
             Console.WriteLine("You are Outside the Abandoned house");
 
@@ -988,6 +1096,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (insideaban == 0)
+            {
+                
+            }
+            else
+            {
+
+            }
+            insideaban = insideaban + 1;
             Console.WriteLine("Proceeding");
             Thread.Sleep(1000);
             Console.WriteLine(".");
@@ -1030,6 +1147,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (parkid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            parkid = parkid + 1;                           
             //Park items array - Samuel B 6/06/2024
             string[] parkItems = new string[0];
             Console.Write("\nYou are currently located within a random park in the eastern outskirts of the city");
@@ -1079,6 +1205,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (westid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            westid = westid + 1;
             //Array of items west - Samuel B 6/06/2024
             string[] westItems = new string[0];
 
@@ -1157,6 +1292,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (factoryid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            factoryid = factoryid + 1;
             Console.WriteLine("\nAs you enter the dilapidated factory you smell a");
             Console.WriteLine("vile stench and catch whispers of growls as the darkness");
             Console.WriteLine("Creeps in around you as you tiptoe finding a lever you flick it");
@@ -1203,6 +1347,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (conveid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            conveid = conveid + 1;
             //Convenience store Entry - Mustafa
             string combinedText = "You have stepped into the dead convenience store, the door creaking as it opened.\n" +
                  "The air was thick with dust, and the once-bright fluorescent lights flickered dimly.\n" +
@@ -1283,6 +1436,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if ( pharmacyid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            pharmacyid = pharmacyid + 1;
             string[] pharmacyItems = new string[] { "painkiller", "Bandages" };
             Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
             bool shotgunInPharmacy = Array.Exists(inventory, i => i == item);
@@ -1365,6 +1527,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (townhallid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            townhallid = townhallid + 1; 
             //Town hall items array - Samuel B 6/06/2024
             string[] townHallItems = new string[0];
             Console.WriteLine("You are outside the Town Hall.");
@@ -1419,9 +1590,16 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
-            //Forest items array - Samuel B 6/06/2024
             string[] forestItems = new string[0];
+            if (forestid == 0)
+            {
 
+            }
+            else
+            {
+
+            }
+            forestid = forestid + 1;
             //Mustafa but Thomas is fixed 30/05/24
             Console.WriteLine("\nYou are Wondering through the forest");
             Console.WriteLine("You see 3 Paths Ahead");
@@ -1487,6 +1665,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (forestnorthid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            forestnorthid = forestnorthid + 1;
             Console.WriteLine("\nOH NO A DEAD END nothing to be seen here");
             Console.ReadLine();
 
@@ -1535,6 +1722,7 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+
             Console.WriteLine("\nYou see a an old bridge and you start passing through it.");
             Console.WriteLine("Player: What's the sound...?");
             Console.WriteLine("creeeek");
@@ -1557,7 +1745,15 @@ namespace ZombieGame
             // Reset the console text color to default
             Console.ResetColor();
             string[] feastItems = new string[] { "Radio" };
+            if (foresteastid == 0)
+            {
 
+            }
+            else
+            {
+
+            }
+            foresteastid = foresteastid + 1;
             //Samuel
             Console.WriteLine("\nYou have walked into the east of the forest and have you have found a Non-Functioning Radio");
 
@@ -1617,6 +1813,15 @@ namespace ZombieGame
             Console.WriteLine("Health: " + health);
             // Reset the console text color to default
             Console.ResetColor();
+            if (churchid == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            churchid = churchid + 1;
             string[] churchItem = new string[] { "Key" };
             int key = 0;
             Console.WriteLine("TEMPORARY\nPleae get us some painkillers to help soothe our pain, if you do this we will provide you with information you may find useful if you want to escape this wretched place.");
