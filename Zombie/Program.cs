@@ -1444,28 +1444,29 @@ namespace ZombieGame
             {
 
             }
-            pharmacyid = pharmacyid + 1;
             string[] pharmacyItems = new string[] { "painkiller", "Bandages" };
-            Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
             bool shotgunInPharmacy = Array.Exists(inventory, i => i == item);
             if (shotgunInPharmacy)
             {
-                Console.WriteLine("You manage to grab hold of your shotgun and open fire on the zombie...");
-                Thread.Sleep(2000);
-                Console.WriteLine("You killed it, thank God");
+                if (pharmacyid <= 0) { pharmacyid = pharmacyid + 1; Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon..."); Thread.Sleep(2000); fight(); }
+                else { }
             }
-            else
+            if (shotgunInPharmacy == false)
             {
-                bool ContinueMethod = true;
-                Console.WriteLine("you reach for a random box of medicine off the pharmacy shelf...");
-                Thread.Sleep(2000);
-                Console.WriteLine("It has no effect against the undead menace, the zombie rips you to shreds, you perish.");
-                Thread.Sleep(2000);
-                health -= 100;
-                Health(ref health, ref ContinueMethod);
-                
+                if (pharmacyid <= 0)
+                {
+                    bool ContinueMethod = true;
+                    Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("you reach for a random box of medicine off the pharmacy shelf...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("It has no effect against the undead menace, the zombie rips you to shreds, you perish.");
+                    Thread.Sleep(2000);
+                    health -= 100;
+                    Health(ref health, ref ContinueMethod);
+                }
+                else { }
             }
-
             do
             {
                 Console.Write("\nWhat's next? > ");
@@ -2238,6 +2239,55 @@ namespace ZombieGame
                 // Stop the main loop by setting ContinueLoop to false
                 ContinueLoop = false;
             }
+        }
+        static void fight()
+        {
+            bool Continueloop = true;
+            int enemyHealth = 100;
+            int playerHealth = 100;
+            Random random = new Random();
+            do
+            {
+                int runChance = random.Next(1);
+                int damage = random.Next(65);
+                Console.WriteLine("'attack' or 'run'");
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "attack":
+                        enemyHealth = enemyHealth - damage;
+                        Console.WriteLine("You fire upon the Zombie...");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("The shotgun shells tear off chunks of flesh from the Zombie");
+                        Thread.Sleep(2000);
+                        break;
+                    case "run":
+                        Console.WriteLine("You attempt to flee...");
+                        Thread.Sleep(2000);
+                        if (runChance == 1) { Console.WriteLine("You were successful MOVING BACK TO HOUSE, TEMPORARY"); Thread.Sleep(2000); House(); }
+                        if (runChance == 0) { Console.WriteLine("You were unsuccessful"); Thread.Sleep(2000); }
+                        break;
+                }
+                Console.WriteLine("The Zombie charges you!");
+                Thread.Sleep(2000);
+                int enemyAtkChance = random.Next(1);
+                int enemyAtkDamage = random.Next(45);
+                if (enemyAtkChance == 1)
+                {
+                    playerHealth = playerHealth - enemyAtkDamage;
+                    Console.WriteLine("The Zombie's attack connects with your body!");
+                    Thread.Sleep(2000);
+                }
+                Console.WriteLine($"You have {playerHealth} points of health left");
+                Thread.Sleep(2000);
+                if (playerHealth <= 0) { health = 0; Health(ref health, ref Continueloop); }
+                Console.Clear();
+            } while (enemyHealth >= 1);
+            Console.WriteLine("You defeated the Zombie");
+            Thread.Sleep(2000);
+            if (pharmacyid == 1) { Pharmacy("Shotgun", Inventory); }
+            else { Console.WriteLine("Fight code not working properly please close game"); Console.ReadLine(); }
+            
         }
 
     }
