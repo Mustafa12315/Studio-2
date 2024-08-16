@@ -154,13 +154,13 @@ namespace ZombieGame
                         insideSchool();
                         break;
                     case "schoolLeft":
-                        schoolLeft();
+                        schoolLeft("Shotgun", Inventory);
                         break;
                     case "schoolRight":
                         schoolRight();
                         break;
                     case "beach":
-                        Beach();
+                        Beach("Chocolate Bar", Inventory);
                         break;
                     case "forest":
                         Forest();
@@ -249,19 +249,19 @@ namespace ZombieGame
             if (houseid == 0)
             {
                 string startstory = "You wake up groggy, sunlight streaming through the gaps in your blinds. It's a Saturday, or at least it should be.\n" +
-"you stretch and glance at the clock—it's later than you intended to sleep. Something feels off, though.\n" +
-"The usual hum of your neighborhood is conspicuously absent. No cars rumbling down the street, no distant chatter.\n" +
-"As you get out of bed, you hear nothing but the faint creak of floorboards. You peer out the window and are\n" +
-"met with an unsettling sight: empty streets. Abandoned cars are scattered around, their doors ajar.\n" +
-"A few people are wandering aimlessly, but they move in a slow, disjointed manner that doesn’t fit with the usual hustle of a weekend morning.\n" +
-"Confusion turns to concern. You step outside, the air feels thick, almost oppressive. The eerie silence is punctuated by distant,\n" +
-"unsettling noises—muffled cries, distant groans. You quickly realize the gravity of the situation. \n" +
-"Your neighborhood, once bustling with life, is now a ghost town.\n" +
-"Your heart races as you try to piece together what’s happened. This isn’t some elaborate prank or a temporary power outage;\n" +
-"\n" +
-"                                         SOMETHING SERIOUS HAS OCCURRED\n" +
-"\n" +
-"You need to understand this new reality and figure out how to protect yourself and find any other survivors.\n";
+                                    "you stretch and glance at the clock—it's later than you intended to sleep. Something feels off, though.\n" +
+                                    "The usual hum of your neighborhood is conspicuously absent. No cars rumbling down the street, no distant chatter.\n" +
+                                    "As you get out of bed, you hear nothing but the faint creak of floorboards. You peer out the window and are\n" +
+                                    "met with an unsettling sight: empty streets. Abandoned cars are scattered around, their doors ajar.\n" +
+                                    "A few people are wandering aimlessly, but they move in a slow, disjointed manner that doesn’t fit with the usual hustle of a weekend morning.\n" +
+                                    "Confusion turns to concern. You step outside, the air feels thick, almost oppressive. The eerie silence is punctuated by distant,\n" +
+                                    "unsettling noises—muffled cries, distant groans. You quickly realize the gravity of the situation. \n" +
+                                    "Your neighborhood, once bustling with life, is now a ghost town.\n" +
+                                    "Your heart races as you try to piece together what’s happened. This isn’t some elaborate prank or a temporary power outage;\n" +
+                                    "\n" +
+                                    "                                         SOMETHING SERIOUS HAS OCCURRED\n" +
+                                    "\n" +
+                                    "You need to understand this new reality and figure out how to protect yourself and find any other survivors.\n";
                 PrintOneByOne(startstory);
             }
             else
@@ -348,9 +348,9 @@ namespace ZombieGame
             if (outsideid == 0)
             {
                 string outstory = "As you step outside, the reality of the situation starts to sink in. " +
-    "You notice of few people wandering aimlessly, their movements sluggish and unnatural,\n" +
-    "they are not reacting to you or to each other their eyes glazed over.Instinctively," +
-    "you back away, trying to make sense of the scene before you";
+                                  "You notice of few people wandering aimlessly, their movements sluggish and unnatural,\n" +
+                                  "they are not reacting to you or to each other their eyes glazed over.Instinctively," +
+                                  "you back away, trying to make sense of the scene before you";
                 PrintOneByOne(outstory);
 
             }
@@ -444,10 +444,11 @@ namespace ZombieGame
             Console.ResetColor();
             if (extendedsouthid == 0)
             {
-                Console.WriteLine("\nYou find yourself standing at the edge of a quiet street, shrouded in the soft glow ");
-                Console.WriteLine("of the evening sun. The street is named \"Crescent Way\", but locals refer to it");
-                Console.WriteLine("simply as \"The Forgotten Path.\" The air is thick with mystery, and each house along ");
-                Console.WriteLine("the road seems to whisper tales of its own.");
+                string southstory = "\nYou find yourself standing at the edge of a quiet street, shrouded in the soft glow "+
+                "of the evening sun. The street is named \"Crescent Way\", but locals refer to it"+
+                "simply as \"The Forgotten Path.\" The air is thick with mystery, and each house along "+
+                "the road seems to whisper tales of its own.";
+                PrintOneByOne(southstory);
             }
             else
             {
@@ -558,9 +559,7 @@ namespace ZombieGame
                         ViewItems(leftItems);
                         break;
                         //Testing case for the testing of the health system - Samuel B 11/06/2024
-                    case "drop":
-                        health -= 100;
-                        Health(ref health, ref ContinueLoop);
+                    case "back":
                         break;
                     case "?":
                     case "help":
@@ -579,11 +578,14 @@ namespace ZombieGame
                         Console.ResetColor();
                         break;
                 }
-            } while (choice != "yes" && ContinueLoop);
+            } while (choice != "yes" && choice!= "back");
             switch (choice)
             {
                 case "yes":
                     currentLocation = "school";
+                    break;
+                case "back":
+                    currentLocation = "extendedSouth";
                     break;
                 
             }
@@ -596,12 +598,11 @@ namespace ZombieGame
             Console.Clear();
             //School items array by Samuel B - 6/06/2024
             string[] schoolItems = new string[0];
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
+
             if (schoolid == 0)
             {
                 Console.WriteLine("You hear a gunshot sound from the school building");
@@ -619,7 +620,7 @@ namespace ZombieGame
                 switch (choice)
                 {
                     case "look around":
-                        //Add
+                        Console.WriteLine("Yous see a puddle of blood in-front of the school front gate add some bullet shelsl");
                         break;
                     case "map":
                         map();
@@ -683,7 +684,7 @@ namespace ZombieGame
             }
             else
             {
-                Console.WriteLine("You are back to the reception");
+                Console.WriteLine("You are back to the school reception");
             }
             insideid = insideid + 1;
             do
@@ -693,7 +694,7 @@ namespace ZombieGame
                 switch (choice)
                 {
                     case "look around":
-                        //Add
+                        Console.WriteLine("You see a human skull and dirty school uniform in the ground");
                         break;
                     case "map":
                         map();
@@ -752,7 +753,8 @@ namespace ZombieGame
             Console.ResetColor(); 
             if (schoolrightid == 0)
             {
-                Console.WriteLine("You are inside the Staff room.");
+                string  temp = "You are inside the Staff room.";
+                PrintOneByOne(temp);
             }
             else
             {
@@ -766,7 +768,9 @@ namespace ZombieGame
                 switch (choice)
                 {
                     case "look around":
-                        //Add
+                        string books = "You see bloody papers covering the floor" +
+                                       "and some untouched book in the shelf";
+                        PrintOneByOne(books);
                         break;
                     case "map":
                         map();
@@ -809,54 +813,86 @@ namespace ZombieGame
                     break;
             }
         }
-        static void schoolLeft()
+        static void schoolLeft(string item, string[] inventory)
         {
-            bool ContinueMethod = true;
             Console.Clear();
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
+            string[] schoolLeftItem = new string[0];
+            bool shotgunInSchool = Array.Exists(Inventory, i => i == item);
             if (schoolleftid == 0)
-            {
-
+            { 
+                if (shotgunInSchool)
+                {
+                    Console.WriteLine("You have entered the Classroom\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
+                    Thread.Sleep(2000);
+                    schoolleftid = schoolleftid + 1; 
+                    fight();
+                }
+                else
+                {
+                    bool ContinueMethod = true;
+                    Console.WriteLine("You have entered the Classroom\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("you reach for a random book off the book shelf and throw");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("It has no effect against the undead menace, the zombie rips you to shreds, you perish.");
+                    Thread.Sleep(2000);
+                    health -= 100;
+                    Health(ref health, ref ContinueMethod);
+                }
             }
             else
             {
-
+                Console.WriteLine("You are back to the classroom");
+               
             }
-            schoolleftid = schoolleftid + 1;
-            Thread.Sleep(2000);
-            Console.WriteLine("You have turned Left");
-            Thread.Sleep(1000);
+            do
+            {
+                Console.WriteLine("\nWhat's next? > ");
+                choice = Console.ReadLine().ToLower();
+                switch (choice)
+                {
+                    case "look around":
+                        Console.Write("You see the dead zombie you killed");
+                        break;
+                    case "map":
+                        map();
+                        break;
+                    case "inventory":
+                        ShowInventory();
+                        break;
+                    case "back":
+                        break;
+                    case "help":
+                    case "?":
+                        Help();
+                        Console.WriteLine("'back' - to navigate and proceed back to the school lobby");
+                        break;
+                    case "items":
+                        ViewItems(schoolLeftItem);
+                        break;
+                    case "location":
+                        Console.WriteLine("You have headed right");
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nThe path you seek does not exist in this forsaken place. \nChoose wisely, for each misstep might be your last. Dare to try again, and may the shadows guide you.");
+                        Console.ResetColor();
+                        break;
+                }
+                Thread.Sleep(1500);
+            } while (choice != "back" && choice != "yes");
+            switch (choice)
+            {
+                case "back":
+                    currentLocation = "insideSchool";
+                    break;
+            }
 
-            // Split the string and highlight the profanity
-            string part1 = "";
-            string highlightedWord = "*INSERT PROFANITY*!!!";
-            string part2 = " You are surrounded by Zombies";
 
-            // Print the first part
-            Console.Write(part1);
-            // Set the console text color to red for the highlighted word
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(highlightedWord);
-            // Reset the console text color to default
-            Console.ResetColor();
-            // Print the second part
-            Console.WriteLine(part2);
-
-            Thread.Sleep(1000);
-            string deadSchool = "Amidst the eerie halls of the abandoned school, " +
-                "the player's final breath was stolen by the relentless grip of the zombie's decaying hands.";
-            PrintOneByOne(deadSchool);
-            Console.ReadLine();
-            Thread.Sleep(2000);
-            // Decrease health
-            health -= 100;
-            // Direct to the health method
-            Health(ref health, ref ContinueMethod);
         }
 
         //Made the Right Method - Mustafa
@@ -875,7 +911,7 @@ namespace ZombieGame
             }
             else
             {
-
+                Console.WriteLine("This path lead to the beach");
             }
             rightid = rightid + 1;
             do
@@ -899,7 +935,7 @@ namespace ZombieGame
                     case "help":
                     case "?":
                         Help();
-                        Console.WriteLine("'back' - to navigate and proceed back to the school lobby ");
+                        Console.WriteLine("'back' - to navigate and proceed back to the  lobby ");
                         break;
                     case "items":
                         ViewItems(rightSchoolItems);
@@ -927,38 +963,96 @@ namespace ZombieGame
         }
         //Made the Beach Method. -Mustafa
         //Thomas to edit beach method
-        static void Beach()
-        {
-            bool ContinueMethod = true;
+        static void Beach(string item, string[] inventory)
+        { 
             Console.Clear();
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            Console.ResetColor(); 
+            Console.ResetColor();
+            string[] beachItems = new string[] {"seaweed"};
+            bool ChocolateInBeach = Array.Exists(inventory, i => i == item);
             if (beachid == 0)
             {
+                if (ChocolateInBeach)
+                {
+                    string sea= "You are in the beach and take some fresh air as you see a group of Sea-leopard\n"+
+                             "You take the chocolate bar from your pocket and give it to the sea leopards\n";
+                    PrintOneByOne(sea);
+                    HandleDropItem("Chocolate Bar", ref beachItems);
+                    beachid = beachid + 1;
+                    Thread.Sleep(1000);
+                        string seazombie ="You see a herd of\nA Zombie jumps out at you, in a panicked state you reach for your weapon...\n"+
+                                          "Before you know it the group of Sea-leopards\n"+
+                                          "bites the zombies to shreds\n";
+                        PrintOneByOne(seazombie);
+                    Console.WriteLine("You take a bath in the waters...");
 
+                }
+                else
+                {
+                    bool ContinueMethod = true;
+                    string deathbeach = "You are in the beach and take some fresh air and see some Sea-Leopard\n" +
+                                        "You ignore them and walk forward towards the waters\n" +
+                                        "You sense some shadows behind you\n" +
+                                        "as you turn you tumble down in-front of the group of Sea-Leopards\n" +
+                                        "And get torn into shreds of meat";
+                    PrintOneByOne(deathbeach);
+                    health -= 100;
+                    Health(ref health, ref ContinueMethod);
+                }
             }
             else
             {
+                Console.WriteLine("You are back to the beach");
+            }
+            do
+            {
+                Console.Write("\nWhat's next? > ");
+                choice = Console.ReadLine().ToLower();
+
+                switch (choice)
+                {
+                    case "look around":
+                        Console.WriteLine("You see the nice sunrise across the sea");
+                        break;
+                    case "map":
+                        map();
+                        break;
+                    case "inventory":
+                        ShowInventory();
+                        break;
+                    case "back":
+                        break;
+                    case "items":
+                        ViewItems(beachItems);
+                        break;
+                    case "help":
+                    case "?":
+                        Help();
+                        Console.WriteLine("'back' - to navigate and proceed to the beach path");
+                        break;
+                    case "location":
+                        Console.WriteLine("You are currently in the beach");
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nThe path you seek does not exist in this forsaken place. \nChoose wisely, for each misstep might be your last. Dare to try again, and may the shadows guide you.");
+                        Console.ResetColor();
+                        break;
+
+
+                }
+                Thread.Sleep(1500);
+            } while (choice != "back");
+            switch (choice)
+            {
+                case "back":
+                    currentLocation = "right";
+                    break;
 
             }
-            beachid = beachid + 1;
-            Console.WriteLine("\nYou reach the Beach the smell of the ocean is a bitter");
-            Console.WriteLine("yet comforting old smell but as you stand upon that sand");
-            Console.WriteLine("You slip and tumble down to the rocky den of leopard seal");
-            Thread.Sleep(1200);
-            Console.WriteLine(".");
-            Thread.Sleep(1200);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Dazed and hurt you have no chance to defend yourself and");
-            Console.WriteLine("You've succumb to the leopard seal's might");
-            Thread.Sleep(2000);
-            //Decrease health
-            health -= 100;
-            //Direct to the health method - 3/06/2024
-            Health(ref health, ref ContinueMethod);
+
         }
 
         //Trevor's duty to edit east method
