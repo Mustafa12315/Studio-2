@@ -181,7 +181,7 @@ namespace ZombieGame
                         EastHouse();
                         break;
                     case "insideAbandoned":
-                        insideAbandoned();
+                        insideAbandoned("shotgun", Inventory);
                         break;
                     case "park":
                         Park();
@@ -1205,7 +1205,7 @@ namespace ZombieGame
         }
 
         //Abandoned building - Mustafa
-        static void insideAbandoned()
+        static void insideAbandoned(string item, string[] inventory)
         {
             bool ContinueMethod = true;
             Console.Clear();
@@ -1224,6 +1224,7 @@ namespace ZombieGame
                                      "panicking you walk back out of the house and you see a scene never thought of" +
                                      "a mutated zombie with 2 heads";
                 PrintOneByOne(insideabadn);
+                
 
             }
             else
@@ -2376,6 +2377,59 @@ namespace ZombieGame
                 ContinueLoop = false;
             }
         }
+        static void Afight()
+        {
+            bool Continueloop = true;
+            int enemyHealth = 100;
+            int playerHealth = 100;
+            Random random = new Random();
+            do
+            {
+                int runChance = random.Next(0,2);
+                int damage = random.Next(65);
+                Console.WriteLine("'attack' or 'run'");
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "attack":
+                        enemyHealth = enemyHealth - damage;
+                        Console.WriteLine("You fire upon the Zombie...");
+                        Thread.Sleep(1500);
+                        Console.WriteLine("The shotgun shells tear off chunks of flesh from the Zombie");
+                        Thread.Sleep(1500);
+                        break;
+                    case "run":
+                        Console.WriteLine("You attempt to flee...");
+                        Thread.Sleep(1500);
+                        if (runChance == 1) { Console.WriteLine("You were successful MOVING BACK TO HOUSE, TEMPORARY"); Thread.Sleep(2000); House(); }
+                        if (runChance == 0) { Console.WriteLine("You were unsuccessful"); Thread.Sleep(2000); }
+                        break;
+                }
+                Console.WriteLine("The Zombie charges you!");
+                Thread.Sleep(2000);
+                int enemyAtkChance = random.Next(1);
+                int enemyAtkDamage = random.Next(45);
+                if (enemyAtkChance == 1)
+                {
+                    playerHealth = playerHealth - enemyAtkDamage;
+                    Console.WriteLine("The Zombie's attack connects with your body!");
+                    Thread.Sleep(2000);
+                }
+                Console.WriteLine($"You have {playerHealth} points of health left");
+                Thread.Sleep(2000);
+                if (playerHealth <= 0) 
+                { 
+                    health = 0;
+                    Health(ref health, ref Continueloop);
+                }
+                Console.Clear();
+            } while (enemyHealth >= 1);
+            Console.WriteLine("You defeated the Mutated Zombie");
+            Thread.Sleep(2000);
+
+        }
+
+
 
         static void fight()
         {
