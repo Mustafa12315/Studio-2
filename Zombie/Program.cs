@@ -513,7 +513,6 @@ namespace ZombieGame
         //Thomas to edit Left method
         static void Left()
         {
-            bool ContinueLoop = true;
             Console.Clear();
 
             string[] leftItems = new string[0];
@@ -539,7 +538,7 @@ namespace ZombieGame
                 switch (choice)
                 {
                     case "look around":
-                        //Add
+                        Console.WriteLine("You see a board which says 'The School is S#f3'");
                         break;
                     case "map":
                         map();
@@ -558,7 +557,6 @@ namespace ZombieGame
                     case "items":
                         ViewItems(leftItems);
                         break;
-                        //Testing case for the testing of the health system - Samuel B 11/06/2024
                     case "back":
                         break;
                     case "?":
@@ -671,12 +669,11 @@ namespace ZombieGame
             Console.Clear();
             //Local item array by Samuel B - 6/06/2024
             string[] iSchoolItems = new string[0];
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
+
             if (insideid == 0)
             {
                 Console.WriteLine("You are inside the School building.");
@@ -687,6 +684,7 @@ namespace ZombieGame
                 Console.WriteLine("You are back to the school reception");
             }
             insideid = insideid + 1;
+
             do
             {
                 Console.WriteLine("\nWhat's next? > ");
@@ -724,8 +722,10 @@ namespace ZombieGame
                         Console.ResetColor();
                         break;
                 }
+
                 Thread.Sleep(1500);
             } while (choice != "back" && choice != "right" && choice != "left");
+
             switch (choice)
             {
                 case "back":
@@ -745,12 +745,11 @@ namespace ZombieGame
             Console.Clear();
             //Local item array by Samuel B - 6/06/2024
             string[] rightSchoolItems = new string[] { "Book" };
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor(); 
+
             if (schoolrightid == 0)
             {
                 string  temp = "You are inside the Staff room.";
@@ -761,6 +760,7 @@ namespace ZombieGame
                 Console.WriteLine("You are back to the Staff room");
             }
             schoolrightid = schoolrightid + 1;
+
             do
             {
                 Console.WriteLine("\nWhat's next? > ");
@@ -905,6 +905,7 @@ namespace ZombieGame
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor(); 
+
             if (rightid == 0)
             {
             Console.WriteLine("You are heading towards the Beach.\nWould you like to proceed?");
@@ -914,6 +915,7 @@ namespace ZombieGame
                 Console.WriteLine("This path lead to the beach");
             }
             rightid = rightid + 1;
+
             do
             {
                 Console.WriteLine("\nWhat's next? > ");
@@ -951,6 +953,7 @@ namespace ZombieGame
                 }
                 Thread.Sleep(1500);
             } while (choice != "back" && choice != "yes");
+
             switch (choice)
             {
                 case "back":
@@ -1061,16 +1064,20 @@ namespace ZombieGame
             Console.Clear();
             //East Items array - Samuel B 6/06/2024
             string[] eastItems = new string[0];
-            Console.WriteLine("You have gone East.");
-            Console.WriteLine("You see 4 paths ahead");
-            Console.WriteLine("Park\nHouse\nChurch\nForest"); 
             if (eastid == 0)
             {
+                string eaststory = "As you walk east you find yourself to a once lively and most crowded place of the town" +
+                                   "now abandoned and destroyed..."+
+                                   "park which is not green anymore, houses and church abandoned"+
+                                   "and the forest which shows no sign of life";
+                PrintOneByOne(eaststory);
 
             }
             else
             {
-
+                Console.WriteLine("You have back to East.");
+                Console.WriteLine("You see 4 paths ahead");
+                Console.WriteLine("Park\nHouse\nChurch\nForest");
             }
             eastid = eastid + 1;
             do
@@ -1133,65 +1140,47 @@ namespace ZombieGame
         //Out side the Abandoned building - Mustafa
         static void EastHouse()
         {
-            // Clear the console screen
             Console.Clear();
             // Display the player's current health
-            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
-            if (easthouseid == 0)
-            {
 
-            }
-            else
-            {
+                string abanstory = "As you approach the abandoned house you get a eerie feeling" +
+                                   "which is not the same as the one you have encountered yet" +
+                                   "You get hesitant for a moment" +
+                                   "and think again if you want to check the house";
+                PrintOneByOne(abanstory);
 
-            }
-            easthouseid = easthouseid + 1;
-            // Display the current location description
-            Console.WriteLine("You are Outside the Abandoned house");
 
-            // Start a loop to get the player's next choice
             do
             {
-                // Prompt the player for their next action
                 Console.Write("\nWhat's next? > ");
-                // Read and convert the player's choice to lowercase
                 choice = Console.ReadLine().ToLower();
-
-                // Handle the player's choice using a switch statement
                 switch (choice)
                 {
                     case "look around":
                         //Add
                         break;
                     case "map":
-                        // Display the map
                         map();
                         break;
                     case "inventory":
-                        // Show the player's inventory
                         ShowInventory();
                         break;
                     case "enter":
                     case "back":
+                        break;
                     case "help":
-                        // Do nothing for these choices as they are handled after the loop
                         break;
                     case "?":
-                        // Display help information
                         Help();
                         Console.WriteLine("'enter' - to gain access to into the room");
                         break;
                     case "location":
-                        // Display the current location description
                         Console.WriteLine("You are within a house that is stationed in the east");
                         break;
                     default:
-                        // Display an error message for invalid choices
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nThe path you seek does not exist in this forsaken place. \nChoose wisely, for each misstep might be your last. Dare to try again, and may the shadows guide you.");
                         Console.ResetColor();
@@ -1207,15 +1196,14 @@ namespace ZombieGame
             switch (choice)
             {
                 case "back":
-                    // Set the current location to "east" if the player chooses to go back
                     currentLocation = "east";
                     break;
                 case "enter":
-                    // Set the current location to "insideAbandoned" if the player chooses to enter the house
                     currentLocation = "insideAbandoned";
                     break;
             }
         }
+
         //Abandoned building - Mustafa
         static void insideAbandoned()
         {
@@ -1229,46 +1217,37 @@ namespace ZombieGame
             Console.ResetColor();
             if (insideaban == 0)
             {
-                
+                string insideabadn = "You enter the abandoned house mustering your courage to seek the mystery" +
+                                     "behind the house as you open the door of the kitchen you see a machete which is rusted because of blood" +
+                                     "you a body behind the cupboard and try not to make any sound as you approach it" +
+                                     "you kicked a bucket which flew right at the door" +
+                                     "panicking you walk back out of the house and you see a scene never thought of" +
+                                     "a mutated zombie with 2 heads";
+                PrintOneByOne(insideabadn);
+
             }
             else
             {
-
+                Console.WriteLine("You are back inside the abandoned building");
             }
+
+
+
             insideaban = insideaban + 1;
-            Console.WriteLine("Proceeding");
-            Thread.Sleep(1000);
-            Console.WriteLine(".");
-            Thread.Sleep(1000);
-            Console.WriteLine(".");
-            Thread.Sleep(1000);
-            Console.Clear();
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
-            Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
-            Console.ResetColor();
-            Thread.Sleep(2000);
-            Console.WriteLine("You have Entered the Abandoned Building");
-            Thread.Sleep(1000);
-            Console.WriteLine("YOU HAVE ENOUNTERED A MUTATED ZOMBIE");
-            Thread.Sleep(1000);
-            Console.WriteLine("Run!!");
-            Thread.Sleep(1000);
             string deadHouse = "In a desperate sprint from the relentless zombie," +
                 " the player's frantic steps faltered, tripping over unseen debris," +
                 " sealing their fate in the cold grasp of the undead.";
             PrintOneByOne(deadHouse);
-            Console.ReadLine();
-            Console.WriteLine();
 
-            Thread.Sleep(2000);
+
+
+
             //Decrease health
             health -= 100;
             //Direct to the health method - 3/06/2024
             Health(ref health, ref ContinueMethod);
         }
+
         static void Park()
         {
             Console.Clear();
@@ -2397,6 +2376,7 @@ namespace ZombieGame
                 ContinueLoop = false;
             }
         }
+
         static void fight()
         {
             bool Continueloop = true;
