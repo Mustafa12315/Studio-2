@@ -1067,6 +1067,7 @@ namespace ZombieGame
             if (eastid == 0)
             {
                 string eaststory = "As you walk east you find yourself to a once lively and most crowded place of the town" +
+                                   "named as the 'Joy street'"+
                                    "now abandoned and destroyed..."+
                                    "park which is not green anymore, houses and church abandoned"+
                                    "and the forest which shows no sign of life";
@@ -1075,9 +1076,7 @@ namespace ZombieGame
             }
             else
             {
-                Console.WriteLine("You have back to East.");
-                Console.WriteLine("You see 4 paths ahead");
-                Console.WriteLine("Park\nHouse\nChurch\nForest");
+                Console.WriteLine("You arre back to the 'Joy street'");
             }
             eastid = eastid + 1;
             do
@@ -1088,7 +1087,7 @@ namespace ZombieGame
                 switch (choice)
                 {
                     case "look around":
-                        //Add
+                        Console.WriteLine("You see a fallen ice cream truck and find youself mesmerizing about the past");
                         break;
                     case "map":
                         map();
@@ -1186,13 +1185,10 @@ namespace ZombieGame
                         Console.ResetColor();
                         break;
                 }
-                // Wait for 1.5 seconds before continuing
                 Thread.Sleep(1500);
 
-                // Continue the loop until the player chooses "back" or "enter"
             } while (choice != "back" && choice != "enter");
 
-            // Handle the player's final choice after exiting the loop
             switch (choice)
             {
                 case "back":
@@ -1204,16 +1200,13 @@ namespace ZombieGame
             }
         }
 
-        //Abandoned building - Mustafa
         static void insideAbandoned(string item, string[] inventory)
         {
             bool ContinueMethod = true;
             Console.Clear();
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             if (insideaban == 0)
             {
@@ -1224,29 +1217,15 @@ namespace ZombieGame
                                      "panicking you walk back out of the house and you see a scene never thought of" +
                                      "a mutated zombie with 2 heads";
                 PrintOneByOne(insideabadn);
-                
-
+                Afight();
             }
             else
             {
                 Console.WriteLine("You are back inside the abandoned building");
             }
 
-
-
             insideaban = insideaban + 1;
-            string deadHouse = "In a desperate sprint from the relentless zombie," +
-                " the player's frantic steps faltered, tripping over unseen debris," +
-                " sealing their fate in the cold grasp of the undead.";
-            PrintOneByOne(deadHouse);
 
-
-
-
-            //Decrease health
-            health -= 100;
-            //Direct to the health method - 3/06/2024
-            Health(ref health, ref ContinueMethod);
         }
 
         static void Park()
@@ -2350,22 +2329,15 @@ namespace ZombieGame
             {
                 // Display current health
                 Console.WriteLine($"Health is now {health}");
-                // Wait for 1.5 seconds
                 Thread.Sleep(1500);
-                // Clear the console
                 Console.Clear();
-                // Display current health again
                 Console.WriteLine("Health: " + health);
             }
             else
             {
-                // If health is 0 or less, clear the console
                 Console.Clear();
-                // Set console text color to red
                 Console.ForegroundColor = ConsoleColor.Red;
-                // Display "GAME OVER" message
                 Console.WriteLine("GAME OVER");
-                // Reset console text color to default
                 Console.ResetColor();
                 // Wait for 2 seconds
                 Thread.Sleep(2000);
@@ -2379,54 +2351,92 @@ namespace ZombieGame
         }
         static void Afight()
         {
-            bool Continueloop = true;
+            bool ContinueMethod = true;
             int enemyHealth = 100;
             int playerHealth = 100;
             Random random = new Random();
             do
             {
-                int runChance = random.Next(0,2);
-                int damage = random.Next(65);
+                int runChance = random.Next(0, 2);
+                int hitchance = random.Next(30,55);
+                int nothit = random.Next(0,5);
+                Console.WriteLine($"You have {playerHealth} health left");
+                Console.WriteLine($"Mutated zombie has {enemyHealth} health left");
                 Console.WriteLine("'attack' or 'run'");
                 string choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "attack":
-                        enemyHealth = enemyHealth - damage;
-                        Console.WriteLine("You fire upon the Zombie...");
+                        Console.WriteLine("You fire upon the Zombie..");
                         Thread.Sleep(1500);
-                        Console.WriteLine("The shotgun shells tear off chunks of flesh from the Zombie");
-                        Thread.Sleep(1500);
+                        if (nothit == 0)
+                        {
+                            Console.WriteLine("You have missed");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You tear off shunks of flesh from the zombie");
+                            enemyHealth = enemyHealth - hitchance;
+                        }
                         break;
                     case "run":
-                        Console.WriteLine("You attempt to flee...");
-                        Thread.Sleep(1500);
-                        if (runChance == 1) { Console.WriteLine("You were successful MOVING BACK TO HOUSE, TEMPORARY"); Thread.Sleep(2000); House(); }
-                        if (runChance == 0) { Console.WriteLine("You were unsuccessful"); Thread.Sleep(2000); }
+                        Console.WriteLine("You attempt to flee");
+                        if (runChance == 0)
+                        {
+                            Console.WriteLine("You were successful in running away");
+                            Thread.Sleep(2000);
+                            House();
+                        }
+                        if (runChance == 1)
+                        {
+                            Console.WriteLine("You were unsuccessful");
+                            string deadHouse = "In a desperate sprint from the relentless zombie," +
+    " the player's frantic steps faltered, tripping over unseen debris," +
+    " sealing their fate in the cold grasp of the undead.";
+                            PrintOneByOne(deadHouse);
+                        }
                         break;
-                }
-                Console.WriteLine("The Zombie charges you!");
-                Thread.Sleep(2000);
-                int enemyAtkChance = random.Next(1);
-                int enemyAtkDamage = random.Next(45);
-                if (enemyAtkChance == 1)
-                {
-                    playerHealth = playerHealth - enemyAtkDamage;
-                    Console.WriteLine("The Zombie's attack connects with your body!");
-                    Thread.Sleep(2000);
-                }
-                Console.WriteLine($"You have {playerHealth} points of health left");
-                Thread.Sleep(2000);
-                if (playerHealth <= 0) 
-                { 
-                    health = 0;
-                    Health(ref health, ref Continueloop);
-                }
-                Console.Clear();
-            } while (enemyHealth >= 1);
-            Console.WriteLine("You defeated the Mutated Zombie");
-            Thread.Sleep(2000);
+                    default:
+                        Console.WriteLine("Wrong input");
+                        break;
 
+                }
+                if (enemyHealth > 0)
+                {
+                    int enemyAtack = random.Next(30);
+                    int enemyhit = random.Next(0, 5);
+                    switch (enemyhit)
+                    {
+                        case 0:
+                            Console.WriteLine("The zombie scraches you");
+                            playerHealth = playerHealth - enemyAtack;
+                            break;
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                            Console.WriteLine("The zombie misses");
+                            break;
+                        default:
+                            Console.WriteLine("Enemy attack isn't working");
+                            break;
+                    }
+                }
+
+            } while(enemyHealth <= 0 || playerHealth <= 0);
+            if (playerHealth <= 0)
+            {
+                health -= 100;
+                //Direct to the health method - 3/06/2024
+                Health(ref health, ref ContinueMethod);
+            }
+            else if (enemyHealth <= 0)
+            {
+                Console.WriteLine("You killed the zombie");
+                Console.WriteLine("Please click enter to continue");
+                Console.ReadLine();
+            }
         }
 
 
