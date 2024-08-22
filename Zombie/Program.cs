@@ -1208,16 +1208,18 @@ namespace ZombieGame
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
+            string[] abanItems = new string[0];
+            bool shotgunInInvenvo = Array.Exists(Inventory, i=> i == item);
             if (insideaban == 0)
             {
-                string insideabadn = "You enter the abandoned house mustering your courage to seek the mystery" +
-                                     "behind the house as you open the door of the kitchen you see a machete which is rusted because of blood" +
-                                     "you a body behind the cupboard and try not to make any sound as you approach it" +
-                                     "you kicked a bucket which flew right at the door" +
-                                     "panicking you walk back out of the house and you see a scene never thought of" +
+                string insideabadn = "You enter the abandoned house mustering your courage to seek the mystery\n" +
+                                     "behind the house as you open the door of the kitchen you see a machete which is rusted because of blood\n" +
+                                     "you a body behind the cupboard and try not to make any sound as you approach it\n" +
+                                     "you kicked a bucket which flew right at the door\n" +
+                                     "panicking you walk back out of the house and you see a scene never thought of\n" +
                                      "a mutated zombie with 2 heads";
                 PrintOneByOne(insideabadn);
-                Afight();
+                fight();
             }
             else
             {
@@ -1225,18 +1227,60 @@ namespace ZombieGame
             }
 
             insideaban = insideaban + 1;
+            do
+            {
+                Console.WriteLine("\nWhat's next? > ");
+                choice = Console.ReadLine().ToLower();
+                switch (choice)
+                {
+                    case "look around":
+                        Console.Write("You see the dead zombie you killed");
+                        break;
+                    case "map":
+                        map();
+                        break;
+                    case "inventory":
+                        ShowInventory();
+                        break;
+                    case "back":
+                        break;
+                    case "help":
+                    case "?":
+                        Help();
+                        Console.WriteLine("'back' - to navigate and proceed out of the abandoned house");
+                        break;
+                    case "items":
+                        ViewItems(abanItems);
+                        break;
+                    case "location":
+                        Console.WriteLine("You Aare inside the abandoned house");
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nThe path you seek does not exist in this forsaken place. \nChoose wisely, for each misstep might be your last. Dare to try again, and may the shadows guide you.");
+                        Console.ResetColor();
+                        break;
+                }
+                Thread.Sleep(1500);
+            } while (choice != "back" && choice != "ye);
+            switch (choice)
+            {
+                case "back":
+                    currentLocation = "insideSchool";
+                    break;
+            }
+
 
         }
 
         static void Park()
         {
             Console.Clear();
-            // Set the console text color to green
-            Console.ForegroundColor = ConsoleColor.Green;
             // Display the player's current health
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
+
             if (parkid == 0)
             {
 
@@ -2375,7 +2419,7 @@ namespace ZombieGame
                         }
                         else
                         {
-                            Console.WriteLine("You tear off shunks of flesh from the zombie");
+                            Console.WriteLine("You tear off chunks of flesh from the zombie");
                             enemyHealth = enemyHealth - hitchance;
                         }
                         break;
