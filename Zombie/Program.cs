@@ -17,6 +17,7 @@ namespace ZombieGame
     {
         //Inventory string by Samuel B 26/5/2024//
         private static string[] Inventory = new string[10];
+        public static string userName;
         private static string instructions = string.Empty;
         private static string choice = string.Empty;
         private static string currentLocation = "house";
@@ -136,7 +137,7 @@ namespace ZombieGame
                         //factory();
                         break;
                     case "town hall":
-                        TownHall();
+                        TownHall("Key", Inventory);
                         break;
                     case "extendedSouth":
                         extendedSouth();
@@ -227,7 +228,12 @@ namespace ZombieGame
                     Console.ResetColor();
                 }
             } while (choice != "yes" && choice != "no");
-
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Please enter your name.....");
+            userName = Console.ReadLine();
+            string b = $"Cool {userName} Let's Start the game.";
+            Thread.Sleep(2000);
             Console.ReadLine();
             //Call to Shed method by Samuel B 25/5/2024//
             House();
@@ -238,7 +244,7 @@ namespace ZombieGame
         {
             Console.Clear();
             //Items array by Samuel B 28/05/2024//
-            string[] houseItems = new string[] { "Shotgun", "Bulletproof Vest" };
+            string[] houseItems = new string[] { "Shotgun", "Bulletproof Vest", "Key"};
             //Health counter by Samuel B 3/06/2024
             // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
@@ -304,6 +310,9 @@ namespace ZombieGame
                         break;
                     case "drop bulletproof vest":
                         HandleDropItem("Bulletproof Vest", ref houseItems);
+                        break;
+                    case "add key":
+                        HandleAddItem("Key", ref houseItems);
                         break;
                     //Cases for help - Samuel B 3/06/2024
                     case "?":
@@ -1108,7 +1117,7 @@ namespace ZombieGame
                         currentLocation = "forest";
                         break;
                     case "back":
-                        currentLocation = "south";
+                        currentLocation = "outside";
                         break;
                         break;
                     case "items":
@@ -1419,7 +1428,7 @@ namespace ZombieGame
                     currentLocation = "factory";
                     break;
                 case "back":
-                    currentLocation = "south";
+                    currentLocation = "outside";
                     break;
                 case "town hall":
                     currentLocation = "town hall";
@@ -1628,24 +1637,15 @@ namespace ZombieGame
             }
         }
 
-        static void TownHall()
+        static void TownHall(string item, string[] inventory)
         {
+            bool ContinueMethod = true;
             Console.Clear();
+            bool keyInTownHall = Array.Exists(Inventory, i => i == item);
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
+
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
-            if (townhallid == 0)
-            {
-
-            }
-            else
-            {
-
-            }
-            townhallid = townhallid + 1; 
-            //Town hall items array - Samuel B 6/06/2024
             string[] townHallItems = new string[0];
             Console.WriteLine("You are outside the Town Hall.");
 
@@ -1666,7 +1666,48 @@ namespace ZombieGame
                         ShowInventory();
                         break;
                     case "enter":
-                        ending("Key", Inventory);
+                        if (keyInTownHall)
+                        {
+                            string a = "You're in TownHall";
+                            PrintOneByOne(a);
+                            Thread.Sleep(200);
+                            string b = "“HEY, WATCH OUT! \nLAY DOWN ON THE GROUND AND PUT YOUR HANDS ON YOUR BACK!”";
+                            PrintOneByOne(b);
+                            Thread.Sleep(200);
+                            string c = $"Are you infected with the virus?";
+                            PrintOneByOne(c);
+                            string isthatyou = Console.ReadLine();
+                            if (isthatyou.Contains('y'))
+                            {
+                                string z = "BANG!!!!!!";
+                                health -= 100;
+                                Health(ref health, ref ContinueMethod);
+                            }
+                            else if (isthatyou.Contains('n'))
+                            {
+                                ending();
+                            }
+                            else
+                            {
+                                Console.WriteLine("invalid input.");
+                            }
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("It appears you currently don't have the key to the town hall in your inventory.");
+                            Console.WriteLine("Please go back and find the key to unlock and gain access to the town hall.");
+                            Thread.Sleep(1500);
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Press ENTER to continue...");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                            Console.Write("Please head back and go and retrieve the key.");
+                            Console.Write("\nCurrent Location: Town Hall");
+                            // Redirect to back to Town Hall method
+                        }
+
                         break;
                     case "back":
                         break;
@@ -1934,45 +1975,55 @@ namespace ZombieGame
 
         //BELOW THIS LINE ARE METHODS THAT AREN'T ROOMS by Sam B 30/5/2024 ---------------------------------------------------
         //--------------------------------------------------------------------------------------------------------
-        static void ending(string item, string[] inventory)
+        static void ending()
         {
-            //Will think of what to do here.. -Mustafa
-            //For the game ending.
-
-            bool keyInTownHall = Array.Exists(inventory, i => i == item);
-
-            if (keyInTownHall)
+            string RightPin = "2622";
+            string userinput;
+            bool solved = false;
+            string a = $"Ohh! No! i am not infected. its me {userName}. Is that you George (George used to work as a gardener in the town park)? \nGeorge: Yes it's me. \n I just wanted to confirm if " +
+                $"you are infected or not don't mind but i have to check if you are saying truth. \n {userName}: Its ok you can.";
+            PrintOneByOne(a);
+            string b = "CHecking...................................................";
+            PrintOneByOne(b);
+            string c = $"George: you're fine. \nI got to know that it is the Evacuation point but on radio it says that we should contact army with the help of a telly device." +
+                $"but its in the shireff's Room but there is a 4 Digit PIN on his door.\n{userName}: did you tried to break the door? \nGeorge: Yes but its very strong because its made" +
+                $" up of metal.";
+            PrintOneByOne(c);
+            Console.WriteLine(" but in emergency file there is a weird thing which says.\n the code of the room is  is 'Z' 'V' But the lock on door is digits.\nyou should try it {userName}.");
+            while (solved != true)
             {
-                //could add inventory to this 'room'? thomas at midnight lol
-                string combinedtext = "You return to the door that once held you back with a smirk as you grab the key you retrieved from the church inserting it and it's a flawless fit\n" +
-                "with a resounding turn. The door pops open in room the atmosphere golden as rays sun illuminate the room from the skylight above you're eyes\n" +
-                "are drawn by the Croatian flag of nation you've fought so hard to protect. Snapping back to the mission at hand you quickly notice the plaque on the\n" +
-                "desk clearly labeled mayor realizing this the mayor office you search around. Then you stumble upon it a combination lock safe behind a mayoral painting\n" +
-                "thinking quickly of a combination you think of what could possibly be the combination then it strikes you, remember the national day of celebration on June 7th every celebration\n" +
-                "the Croatian revolution of 879. I hit you like an ocean breeze you enter 7879 and the safe opens inside there is a device with antenna and a note next to it\n" +
-                "saying 'evacuation' plunging the button down you hear a beep and then wonder if it worked after sometime passes, you step outside and hear droning in the distance.\n" +
-                "Moments later there's a helicopter over your head and zombies swarming all around you and you see the helicopter landing on the roof and without a second thought you race toward it\n" +
-                "your heart pounds as you race the zombies and fear. A voice yells out at you and you jump into helicopter gun fire all around suppresses the heat of the moment\n" +
-                "Congratulations you've achieved victory over zombie game.\n\n" +
-                "You have completed the game. Thank you for playing!";
-                PrintOneByOne(combinedtext);
-                Console.ReadLine();
-                Environment.Exit(0); // Exits the console application
+                Console.WriteLine("\n\nEnter the code:");
+                userinput = Console.ReadLine();
+                if (userinput == RightPin)
+                {
+                    solved = true;
+                }
+                else
+                {
+                    Console.WriteLine("INCORRECT PIN!");
+                }
             }
-            else
+
+            string d = $"George:Awesome {userName} you did it. Luckily i know how to use telly i'll inform army.\n{userName}: Make sure to tell them that more people are stuck in church as well.";
+            PrintOneByOne(d);
+
+            int[] frequencies = { 800, 900, 1000, 1100, 1200 };
+            int duration = 200;
+            foreach (int freq in frequencies)
             {
-                Console.WriteLine("It appears you currently don't have the key to the town hall in your inventory.");
-                Console.WriteLine("Please go back and find the key to unlock and gain access to the town hall.");
-                Thread.Sleep(1500);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Press ENTER to continue...");
-                Console.ResetColor();
-                Console.ReadLine();
-                Console.Clear();
-                Console.Write("Please head back and go and retrieve the key.");
-                Console.Write("\nCurrent Location: Town Hall");
-                // Redirect to back to Town Hall method
+                Console.Beep(freq, duration);
+                Thread.Sleep(100);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Beep(1200, duration + i * 100);
+                Thread.Sleep(100);
+            }
+            Console.Beep(1500, 800);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("  _____  .__              .__                  _________                                          _____     .__   \r\n  /     \\ |__| ______ _____|__| ____   ____    /   _____/__ __   ____  ____  ____   ______ _______/ ____\\_ __|  |  \r\n /  \\ /  \\|  |/  ___//  ___/  |/  _ \\ /    \\   \\_____  \\|  |  \\_/ ___\\/ ___\\/ __ \\ /  ___//  ___/\\   __\\  |  \\  |  \r\n/    Y    \\  |\\___ \\ \\___ \\|  (  <_> )   |  \\  /        \\  |  /\\  \\__\\  \\__\\  ___/ \\___ \\ \\___ \\  |  | |  |  /  |__\r\n\\____|__  /__/____  >____  >__|\\____/|___|  / /_______  /____/  \\___  >___  >___  >____  >____  > |__| |____/|____/\r\n        \\/        \\/     \\/               \\/          \\/            \\/    \\/    \\/     \\/     \\/                   ");
+            Console.ResetColor();
         }
 
         static void ViewItems(string[] Items)
