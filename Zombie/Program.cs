@@ -1551,35 +1551,42 @@ namespace ZombieGame
         static void Pharmacy(string item, string[] inventory)
         {
             Console.Clear();
-            // Display the player's current health
+            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
+            // Display the player's current health
             Console.WriteLine("Health: " + health);
+            // Reset the console text color to default
             Console.ResetColor();
-
-            string[] pharmacyItems = new string[] { "painkiller", "Bandages" };
-            bool shotgunInPharmacy = Array.Exists(inventory, i => i == item);
-            if ( pharmacyid == 0)
+            if (pharmacyid == 0)
             {
-                if (shotgunInPharmacy)
-                {
-                    String pharmacyfightyes ="You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon...";
-                    PrintOneByOne(pharmacyfightyes);
-                    fight(); 
-                }
-                else
-                {
-                    bool ContinueMethod = true;
-                    string pharmacyfightdead = "You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon..." +
-                     "you reach for a random box of medicine off the pharmacy shelf..." +
-                     "It has no effect against the undead menace, the zombie rips you to shreds, you perish.";
-                    PrintOneByOne(pharmacyfightdead);
-                    health -= 100;
-                    Health(ref health, ref ContinueMethod);
-                }
+
             }
             else
             {
-                Console.WriteLine("You are back to the pharmacy");
+
+            }
+            string[] pharmacyItems = new string[] { "painkiller", "Bandages" };
+            bool shotgunInPharmacy = Array.Exists(inventory, i => i == item);
+            if (shotgunInPharmacy)
+            {
+                if (pharmacyid <= 0) { pharmacyid = pharmacyid + 1; Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon..."); Thread.Sleep(2000); fight(); }
+                else { }
+            }
+            else
+            {
+                if (pharmacyid <= 0)
+                {
+                    bool ContinueMethod = true;
+                    Console.WriteLine("You have entered the Pharmacy\nA Zombie jumps out at you, in a panicked state you reach for your weapon...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("you reach for a random box of medicine off the pharmacy shelf...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("It has no effect against the undead menace, the zombie rips you to shreds, you perish.");
+                    Thread.Sleep(2000);
+                    health -= 100;
+                    Health(ref health, ref ContinueMethod);
+                }
+                else { }
             }
             do
             {
