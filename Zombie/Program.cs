@@ -1646,12 +1646,14 @@ namespace ZombieGame
 
         static void TownHall(string item, string[] inventory)
         {
-            bool ContinueMethod = true;
+
+            bool ContinueMethod=true;
             Console.Clear();
             bool keyInTownHall = Array.Exists(Inventory, i => i == item);
             Console.ForegroundColor = ConsoleColor.Green;
-
+  
             Console.WriteLine("Health: " + health);
+          
             Console.ResetColor();
             string[] townHallItems = new string[0];
             Console.WriteLine("You are outside the Town Hall.");
@@ -1673,6 +1675,7 @@ namespace ZombieGame
                         ShowInventory();
                         break;
                     case "enter":
+
                         if (keyInTownHall)
                         {
                             string a = "You're in TownHall";
@@ -1683,7 +1686,9 @@ namespace ZombieGame
                             Thread.Sleep(200);
                             string c = $"Are you infected with the virus?";
                             PrintOneByOne(c);
-                            string isthatyou = Console.ReadLine();
+
+                            string isthatyou=Console.ReadLine();
+                          
                             if (isthatyou.Contains('y'))
                             {
                                 string z = "BANG!!!!!!";
@@ -1986,7 +1991,9 @@ namespace ZombieGame
         {
             string RightPin = "2622";
             string userinput;
+          
             bool solved = false;
+          
             string a = $"Ohh! No! i am not infected. its me {userName}. Is that you George (George used to work as a gardener in the town park)? \nGeorge: Yes it's me. \n I just wanted to confirm if " +
                 $"you are infected or not don't mind but i have to check if you are saying truth. \n {userName}: Its ok you can.";
             PrintOneByOne(a);
@@ -2003,7 +2010,9 @@ namespace ZombieGame
                 userinput = Console.ReadLine();
                 if (userinput == RightPin)
                 {
+                  
                     solved = true;
+                  
                 }
                 else
                 {
