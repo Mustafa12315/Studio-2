@@ -295,7 +295,6 @@ namespace ZombieGame
 
                 Console.Write("\nWhat's next? > ");
                 choice = Console.ReadLine().ToLower();
-                //Changed if statement to switch statement by Samuel B 29/05/2024
                 switch (choice)
                 {
                     case "look around":
@@ -312,24 +311,18 @@ namespace ZombieGame
                     case "outside":
                         //Leave empty
                         break;
-                    //Cases for shotgun - Samuel B 3/06/2024
                     case "add shotgun":
                         HandleAddItem("Shotgun", ref houseItems);
                         break;
                     case "drop shotgun":
                         HandleDropItem("Shotgun", ref houseItems);
                         break;
-                    //Cases for vest - Samuel B 3/06/2024
                     case "add bulletproof vest":
                         HandleAddItem("Bulletproof Vest", ref houseItems);
                         break;
                     case "drop bulletproof vest":
                         HandleDropItem("Bulletproof Vest", ref houseItems);
                         break;
-                    case "add key":
-                        HandleAddItem("Key", ref houseItems);
-                        break;
-                    //Cases for help - Samuel B 3/06/2024
                     case "?":
                     case "help":
                         Help();
@@ -350,24 +343,17 @@ namespace ZombieGame
                 }
                 Thread.Sleep(1500);
             } while (choice != "outside");
-            //Call to South method by Samuel B 26/05/2024//
 
             currentLocation = "outside";
         }
 
 
-        //Thomas F 28/05/2024 working on the south method
         static void Outside()
         {
             Console.Clear();
-            //South items array by Samuel B 28/05/2024//
             string[] SouthItems = new string[] { "Drugs" };
-            //Health counter by Samuel B 3/06/2024
-            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             if (outsideid == 0)
             {
@@ -389,7 +375,6 @@ namespace ZombieGame
                 Console.Write("\nWhat's next? > ");
                 choice = Console.ReadLine().ToLower();
                 Console.WriteLine("");
-                //Changed if statement to switch statement by Samuel B 29/05/2024
                 switch (choice)
                 {
                     case "look around":
@@ -436,7 +421,6 @@ namespace ZombieGame
 
                 Thread.Sleep(1500);
             } while (choice != "south" && choice != "east" && choice != "west" && choice != "back");
-            //If the choices are equal to the south, west and east
             switch (choice)
             {
                 case "south":
@@ -454,17 +438,12 @@ namespace ZombieGame
             }
 
         }
-        //Extended South room by Samuel B 29/05/2024
         static void extendedSouth()
         {
             Console.Clear();
             string[] extendedSouthItems = new string[0];
-            //Health counter by Samuel B 3/06/2024
-            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             if (extendedsouthid == 0)
             {
@@ -534,13 +513,11 @@ namespace ZombieGame
                     break;
             }
         }
-        //Thomas to edit Left method
         static void Left()
         {
             Console.Clear();
 
             string[] leftItems = new string[0];
-            //Health counter by Samuel B 3/06/2024
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -613,14 +590,10 @@ namespace ZombieGame
             }
 
         }
-        //Made The School Method
-        //School -Mustafa
         static void School()
         {
             Console.Clear();
-            //School items array by Samuel B - 6/06/2024
             string[] schoolItems = new string[0];
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -691,7 +664,6 @@ namespace ZombieGame
         static void insideSchool()
         {
             Console.Clear();
-            //Local item array by Samuel B - 6/06/2024
             string[] iSchoolItems = new string[0];
             // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
@@ -767,9 +739,7 @@ namespace ZombieGame
         static void schoolRight()
         {
             Console.Clear();
-            //Local item array by Samuel B - 6/06/2024
             string[] rightSchoolItems = new string[] { "Book" };
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor(); 
@@ -804,7 +774,6 @@ namespace ZombieGame
                         break;
                     case "back":
                         break;
-                    //Cases for Book - Mustafa
                     case "add book":
                         HandleAddItem("Book", ref rightSchoolItems);
                         break;
@@ -840,7 +809,6 @@ namespace ZombieGame
         static void schoolLeft(string item, string[] inventory)
         {
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -919,13 +887,10 @@ namespace ZombieGame
 
         }
 
-        //Made the Right Method - Mustafa
         static void Right()
         {
             Console.Clear();
-            //Local item array by Samuel B - 6/06/2024
             string[] rightSchoolItems = new string[0];
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor(); 
@@ -988,12 +953,9 @@ namespace ZombieGame
                     break;
             }
         }
-        //Made the Beach Method. -Mustafa
-        //Thomas to edit beach method
         static void Beach(string item, string[] inventory)
         { 
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -1082,11 +1044,10 @@ namespace ZombieGame
 
         }
 
-        //Trevor's duty to edit east method
+
         static void east()
         {
             Console.Clear();
-            //East Items array - Samuel B 6/06/2024
             string[] eastItems = new string[0];
             if (eastid == 0)
             {
@@ -1160,11 +1121,10 @@ namespace ZombieGame
                 Thread.Sleep(1500);
             } while (choice != "park" && choice != "house" && choice != "church" && choice != "forest" && choice != "back");
         }
-        //Out side the Abandoned building - Mustafa
+
         static void EastHouse()
         {
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -1228,7 +1188,6 @@ namespace ZombieGame
         {
             bool ContinueMethod = true;
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -1300,7 +1259,6 @@ namespace ZombieGame
         static void Park()
         {
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -1366,7 +1324,6 @@ namespace ZombieGame
         static void west()
         {
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -1566,11 +1523,8 @@ namespace ZombieGame
         static void Pharmacy(string item, string[] inventory)
         {
             Console.Clear();
-            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             if (pharmacyid == 0)
             {
@@ -1765,7 +1719,6 @@ namespace ZombieGame
         static void Forest()
         {
             Console.Clear();
-            // Display the player's current health
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Health: " + health);
             Console.ResetColor();
@@ -1826,11 +1779,8 @@ namespace ZombieGame
         static void feast()
         {
             Console.Clear();
-            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             string[] feastItems = new string[] { "Radio" };
             if (foresteastid == 0)
@@ -1842,7 +1792,6 @@ namespace ZombieGame
 
             }
             foresteastid = foresteastid + 1;
-            //Samuel
             Console.WriteLine("\nYou have walked into the east of the forest and have you have found a Non-Functioning Radio");
 
 
@@ -1862,15 +1811,11 @@ namespace ZombieGame
                         ShowInventory();
                         break;
                     case "add radio":
-                        //Adding item to inv
                         AddItemInv("Radio");
-                        //remove item from item list
                         feastItems = RemoveItem(feastItems, "Radio");
                         break;
                     case "drop radio":
-                        //Dropping item from inv
                         DropItemInv("Radio");
-                        //Adding item back to house items
                         feastItems = AddItem(feastItems, "Radio");
                         break;
                     case "items":
@@ -1894,15 +1839,11 @@ namespace ZombieGame
             }
         }
 
-        //Church -Mustafa (Made a bit story here :) ) 
         static void Church(string item, string[] inventory)
         {
             Console.Clear();
-            // Set the console text color to green
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             if (churchid == 0)
             {
@@ -1938,10 +1879,8 @@ namespace ZombieGame
 
                 PrintOneByOne(TalkingPart1);
 
-                // Set the console text color to red for the highlighted word
                 Console.ForegroundColor = ConsoleColor.Red;
                 PrintOneByOne(highlightedWord);
-                // Reset the console text color to default
                 Console.ResetColor();
 
                 PrintOneByOne(TalkingPart2);
@@ -2000,8 +1939,45 @@ namespace ZombieGame
         }
 
 
-        //BELOW THIS LINE ARE METHODS THAT AREN'T ROOMS by Sam B 30/5/2024 ---------------------------------------------------
-        //--------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //\-\-\-\-\\-\-\\-\-\\-\-\-\\-\-\-\\-\-\-\-\-below this line there are functions not locations-\-\-\-\-\\-\-\\-\-\\-\-\-\\-\-\-\\-\-\-\-\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         static void ending()
         {
             string RightPin = "2622";
@@ -2078,7 +2054,6 @@ namespace ZombieGame
             }
         }
 
-        //Instructions method by Sam B
         static string Instructions(string inst)
         {
             inst = @"INSTRUCTIONS:
@@ -2097,9 +2072,7 @@ namespace ZombieGame
         }
 
         static void map()
-        {        //Mustafa 25/05/2024 - Adding a basic map to be used for now will make a better one..
-            //Samuel 28/05/2024 - Updated map
-            //Changed the color to blue..
+        {       
             Console.ForegroundColor= ConsoleColor.Blue;
             Console.WriteLine(@"
                                                 _________             _________________________________
@@ -2155,7 +2128,6 @@ namespace ZombieGame
         
         static void PrintOneByOne(string text)
         {
-            //Mustafa - Making the characters one by one
             for (int i = 0; i < text.Length; i++)
             {
                 Console.Write(text[i]);
@@ -2163,7 +2135,6 @@ namespace ZombieGame
             }
             Console.ReadLine();
         }
-        //Methods regarding Item Arrays by Samuel B 27/05/2024----------------------
         static string[] RemoveItem(string[] array, string itemToRemove)
         {
             int index = Array.IndexOf(array, itemToRemove);
@@ -2179,7 +2150,6 @@ namespace ZombieGame
             Array.Copy(array, index + 1, newArray, index, newArray.Length - index);
             return newArray;
         }
-        //Method for add items back to the item array by Samuel B 29/05/2024
         static string[] AddItem(string[] array, string itemToAdd)
         {
             //create new array
@@ -2190,9 +2160,6 @@ namespace ZombieGame
         }
 
 
-        //Methods regarding the inventory array by Samuel B 27/05/2024-----------------------
-        //Method for Adding items to inv  by Samuel B 29/05/2024
-        //Edited this method Samuel B - 1/06/2024
         static bool AddItemInv(string item)
         {
             for (int i = 0; i < Inventory.Length; i++)
@@ -2210,8 +2177,7 @@ namespace ZombieGame
             return false;
 
         }
-        //Method for removing items to inv  by Samuel B 29/05/2024
-        //Edited this method Samuel B - 1/06/2024
+
         static bool DropItemInv(string item)
         {
             for (int i = 0; i < Inventory.Length; i++)
@@ -2230,7 +2196,6 @@ namespace ZombieGame
             return false;
 
         }
-        //Inventory method by Samuel B 27/05/2024//
         static void ShowInventory()
         {
             int i = 0;
@@ -2247,17 +2212,14 @@ namespace ZombieGame
                 Console.WriteLine("Inventory is empty");
             }
         }
-        //-------------------------------------------------------
-        //New methods for handling items by Samuel B 1/06/2024
         static void HandleAddItem(string item, ref string[] houseItems)
         {
-            //Booleans for testing if item is in house and inv - Samuel B 1/06/2024
+            //Booleans for testing if item is in house and inv
             bool itemnInLocation = Array.Exists(houseItems, i => i == item);
             bool itemInInventory = Array.Exists(Inventory, i => i == item);
 
             if (itemnInLocation && !itemInInventory)
             {
-                //if statement for adding item to inv
                 if (AddItemInv(item))
                 {
                     //Removes item from items array when added to inv
@@ -2292,14 +2254,11 @@ namespace ZombieGame
         }
         static void Quit()
         {
-
-            // Mustafa - Quiting the game
             Console.WriteLine("Quiting the game.");
             Console.ReadLine();
-            //Exit the program - Sam B 1/06/2024
             Environment.Exit(0);
         }
-        //Help method by Samuel B - 3/06/2024
+
         static void Help()
         {
             Console.WriteLine("You can type commands such as: ");
@@ -2312,7 +2271,7 @@ namespace ZombieGame
             Console.WriteLine("'location' - to view current location");
             Console.WriteLine("'back' - to head back to previous location");
         }
-        //Health method by Samuel B - 3/06/2024
+
         static void Health(ref int health, ref bool ContinueLoop)
         {
             // Check if health is greater than 0
@@ -2419,7 +2378,7 @@ namespace ZombieGame
             if (playerHealth <= 0)
             {
                 health -= 100;
-                //Direct to the health method - 3/06/2024
+                //Direct to the health method
                 Health(ref health, ref ContinueMethod);
             }
             else if (enemyHealth <= 0)
@@ -2483,5 +2442,4 @@ namespace ZombieGame
         }
 
     }
-    //--------------------------------
 }
