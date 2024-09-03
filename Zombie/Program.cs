@@ -30,9 +30,7 @@ namespace ZombieGame
         {
             int ans;
 
-            // Mustafa - Starting the game
-            // Samuel B - Editing Start Menu - 1/06/2024
-            //edited the intro assci so that it comes as a animation
+                                                              //Ascii art start
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Put the window in full screen. \nPress enter....");
             Console.ResetColor();
@@ -53,60 +51,74 @@ namespace ZombieGame
             Thread.Sleep(300);
             Console.Write("                                                                          P^ 5??!^ : .: : ^!??5 ^P                                      \r\n                                                                          J7 J?^^?!5!:^!5!?^^?J 7J                                      \r\n                                                                          7J::7J7:^!~^^~!^:7J7::J7                                      \r\n                                                                          7Y^  .7??7?77?7??7.  ^57                                      \r\n                                                                          .^7??!^:::~^^~:::^!??7^.                                      \r\n                                                                              :~??7^    ^7??~:                                          \r\n                                                                                 .!?7777?!.     \r\n");
             Thread.Sleep(300);
-            Console.Write("\r\n\r\n                                        1) START\r\n                                        2) START\r\n                                        3) QUIT    ");
+            Console.Write("\r\n\r\n                                        1) START\r\n                                        2) QUIT    ");
             Thread.Sleep(300);
             Console.ResetColor();
+                                                              //Ascii art start
 
+            bool falseinput; //this bool is to confirm if there is any invalid input in the loop below
             do
             {
-                Console.Write("\n\nEnter your answer > ");
+                Console.Write("\n\nEnter your input > ");
                 ans = Convert.ToInt32(Console.ReadLine());
 
-                // Mustafa -Intro to the Game
                 switch (ans)
                 {
+
                     case 1:
-                    case 2:
-                    case 3:
+                        falseinput = false;
+                        bool inputOverviewLoop=false; //this bool is to confirm if there is any invalid input in the loop below
+                        do
+                        {
+                            Console.WriteLine("do you need the overview of game? (yes/no)");
+                            string userinput = Console.ReadLine();
+                            if (userinput.ToLower().Contains('y'))
+                            {
+                                string combinedText = "In a world overrun by the Undead, survival is paramount.\n" +
+                                                          "Welcome to [Whispers of the Dead].\n" +
+                                                          "Where every shadow could conceal a lurking horror and every step could lead to your doom.\n" +
+                                                          "As civilization crumbles, you must navigate through the chaos, scavenging for resources, fortifying shelters.\n" +
+                                                          "But beware, for the infected hordes are relentless, driven by an insatiable hunger for flesh.\n" +
+                                                          "Will you muster the courage to fight back, or will you join the ranks of the walking dead?\n" +
+                                                          "The choices are yours in this heart-pounding journey through the apocalypse.";
+
+                                PrintOneByOne(combinedText);
+                            }
+                            else if (userinput.ToLower().Contains('n'))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("invalid input");
+                                inputOverviewLoop = true;
+                            }
+                        } while (inputOverviewLoop==true);
+
                         break;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Invalid choice");
+
+                    case 2:
+                        falseinput = false;
+                        break;
+                    case 3:
+                        falseinput = false;
+                        Quit();
+                        break;
+
+                        default: 
+                        Console.ForegroundColor= ConsoleColor.Red;
+                        Console.WriteLine("Invalid input.");
                         Console.ResetColor();
+                        falseinput = true;
                         break;
                 }
-            } while (ans != 1 && ans != 2 && ans != 3);
-            Console.Clear();
-            switch (ans)
-            {
+            }while(falseinput==true);
 
-                case 1:
-                    string combinedText = "In a world overrun by the Undead, survival is paramount.\n" +
-                                              "Welcome to [Whispers of the Dead].\n" +
-                                              "Where every shadow could conceal a lurking horror and every step could lead to your doom.\n" +
-                                              "As civilization crumbles, you must navigate through the chaos, scavenging for resources, fortifying shelters.\n" +
-                                              "But beware, for the infected hordes are relentless, driven by an insatiable hunger for flesh.\n" +
-                                              "Will you muster the courage to fight back, or will you join the ranks of the walking dead?\n" +
-                                              "The choices are yours in this heart-pounding journey through the apocalypse.";
-
-                    PrintOneByOne(combinedText);
-                    break;
-                case 2:
-                    currentLocation = "input";
-                    break;
-                case 3:
-
-                    Quit();
-                    break;
-            }
-
-            Console.ReadLine();
+            currentLocation = "input";
 
             Console.Clear();
             Thread.Sleep(300);
-            //Input call by Samuel B 25/5/2024//
-            Input();
-
+           
             //While loop for location to prevent stack overflow
             while (true)
             {
@@ -198,59 +210,62 @@ namespace ZombieGame
 
 
         }
-        //Input method by Samuel B 25/5/2024//
         static void Input()
         {
-            //Initialize health counter after death - Samuel B - 11/06/2024
             health = 100;
-            //Do while loop by Samuel B 25/5/2024 | If the user types an answer other than yes or no when asked for instructions//
+
+            bool invalidIntroChoice = false;
             do
             {
-                //Ask for user choice Samuel B 25/5/2024
                 Console.Write("Would you like instructions?: ");
                 choice = Console.ReadLine();
 
-                if (choice.ToLower() == "yes")
+                if (choice.ToLower().Contains('y'))
                 {
 
                     instructions = Instructions(instructions);
                     Console.WriteLine(instructions);
 
                 }
-                else if (choice.ToLower() == "no")
+                else if (choice.ToLower().Contains('n'))
                 {
                     Console.WriteLine("Press enter to continue...");
                 }
                 else
                 {
+                    invalidIntroChoice = true;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Invalid choice. Please type 'yes' or 'no'");
                     Console.ResetColor();
                 }
-            } while (choice != "yes" && choice != "no");
+            } while (invalidIntroChoice==true);
+
+            Console.ForegroundColor= ConsoleColor.Green;
+            Console.WriteLine("Press Enter to continue.....");
+            Console.ResetColor();
             Console.ReadLine();
             Console.Clear();
+
             Console.WriteLine("Please enter your name.....");
             userName = Console.ReadLine();
+
             string b = $"Cool {userName} Let's Start the game.";
             Thread.Sleep(2000);
+            Console.Clear() ;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Press Enter to continue.....");
+            Console.ResetColor();
             Console.ReadLine();
-            //Call to Shed method by Samuel B 25/5/2024//
+
             House();
 
         }
-        //Shed method by Samuel B 26/05/2024//
         static void House()
         {
             Console.Clear();
-            //Items array by Samuel B 28/05/2024//
-            string[] houseItems = new string[] { "Shotgun", "Bulletproof Vest", "Key"};
-            //Health counter by Samuel B 3/06/2024
-            // Set the console text color to green
+            string[] houseItems = new string[] { "Shotgun", "Bulletproof Vest"};
             Console.ForegroundColor = ConsoleColor.Green;
-            // Display the player's current health
             Console.WriteLine("Health: " + health);
-            // Reset the console text color to default
             Console.ResetColor();
             if (houseid == 0)
             {
